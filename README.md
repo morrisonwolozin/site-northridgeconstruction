@@ -5,3 +5,17 @@
 - revised from the original Bootstrap 4.0 site deployed on Dreamhost.com
 - smaller galleries
 - focused on cost and delivery, explicitly excluding development
+
+# folder structure
+
+northridgeconstruction.me/
+├── index.html
+├── delivery/
+│ └── sample-estimate.html
+├── data/
+│ └── rates-northridge.json
+└── assets/
+└── img/
+├── portfolio/
+├── team/
+└── testimonials/
