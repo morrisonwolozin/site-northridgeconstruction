@@ -7,16 +7,4 @@
 - focused on cost and delivery, explicitly excluding development
 - will be deployed on Digital Ocean
 
-# folder structure
-
-northridgeconstruction.me/
-├── index.html
-├── delivery/
-│ └── sample-estimate.html
-├── data/
-│ └── rates-northridge.json
-└── assets/
-└── img/
-├── portfolio/
-├── team/
-└── testimonials/
+# costing tool coming soon!
