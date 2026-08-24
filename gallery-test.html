@@ -152,7 +152,8 @@ projectsGrid.forEach(project => {
   // ── Card ───────────────────────────────────────────────────────
   const card = document.createElement('div');
   card.className   = 'project-card';
-  card.dataset.category = project.type;
+  card.dataset.status = project.status;
+  card.dataset.type   = project.type;
 
   // Type label for display
   const typeLabel = {
@@ -265,7 +266,10 @@ filterBtns.forEach(btn => {
     btn.classList.add('active');
     const filter = btn.dataset.filter;
     cards.forEach(card => {
-      const show = filter === 'all' || card.dataset.category === filter;
+      const show = filter === 'all'
+        || (filter === 'current'          && card.dataset.status === 'current')
+        || (filter === 'new-construction' && card.dataset.type   === 'new-construction')
+        || (filter === 'renovation'       && card.dataset.type   === 'renovation');
       card.style.display = show ? 'block' : 'none';
     });
   });
