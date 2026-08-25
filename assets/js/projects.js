@@ -67,11 +67,10 @@ export const projects = [
     hero: 'assets/img/portfolio/greek-revival-belfast-hero.webp',
     delivery_url: null,
     gallery: [
-      { src: 'assets/img/portfolio/greek-revival-belfast-01.webp', caption: 'Framing complete' },
-      { src: 'assets/img/portfolio/greek-revival-belfast-02.webp', caption: '' },
-      { src: 'assets/img/portfolio/greek-revival-belfast-03.webp', caption: '' },
-      { src: 'assets/img/portfolio/greek-revival-belfast-04.webp', caption: '' },
-      { src: 'assets/img/portfolio/greek-revival-belfast-05.webp', caption: '' },
+      { src: 'assets/img/portfolio/greek-revival-belfast-01.webp', caption: 'view towards harbor' },
+      { src: 'assets/img/portfolio/greek-revival-belfast-02.webp', caption: 'foundation' },
+      { src: 'assets/img/portfolio/greek-revival-belfast-03.webp', caption: 'shell in progress' },
+      { src: 'assets/img/portfolio/greek-revival-belfast-04.webp', caption: 'southwest elevation in progress' },
     ],
   },
 
@@ -87,9 +86,8 @@ export const projects = [
     hero: 'assets/img/portfolio/modern-colonial-liberty-hero.webp',
     delivery_url: null,
     gallery: [
+      { src: 'assets/img/portfolio/modern-colonial-liberty-00.webp', caption: '' },
       { src: 'assets/img/portfolio/modern-colonial-liberty-01.webp', caption: '' },
-      { src: 'assets/img/portfolio/modern-colonial-liberty-02.webp', caption: '' },
-      { src: 'assets/img/portfolio/modern-colonial-liberty-03.webp', caption: '' },
     ],
   },
 
