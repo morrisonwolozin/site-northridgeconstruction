@@ -7,4 +7,4 @@
 - focused on cost and delivery, explicitly excluding development
 - will be deployed on Digital Ocean
 
-# costing tool coming soon!
+# costing predictor tool coming soon!

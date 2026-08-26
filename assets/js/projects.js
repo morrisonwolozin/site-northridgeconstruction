@@ -67,16 +67,19 @@ export const projects = [
     hero: 'assets/img/portfolio/greek-revival-belfast-hero.webp',
     delivery_url: null,
     gallery: [
-      { src: 'assets/img/portfolio/greek-revival-belfast-01.webp', caption: 'view towards harbor' },
-      { src: 'assets/img/portfolio/greek-revival-belfast-02.webp', caption: 'foundation' },
-      { src: 'assets/img/portfolio/greek-revival-belfast-03.webp', caption: 'shell in progress' },
-      { src: 'assets/img/portfolio/greek-revival-belfast-04.webp', caption: 'southwest elevation in progress' },
+      { src: 'assets/img/portfolio/greek-revival-belfast-00.webp', caption: 'southeast elevation' },
+      { src: 'assets/img/portfolio/greek-revival-belfast-01.webp', caption: 'south elevation' },
+      { src: 'assets/img/portfolio/greek-revival-belfast-02.webp', caption: 'view towards harbor' },
+      { src: 'assets/img/portfolio/greek-revival-belfast-03.webp', caption: 'living room' },
+      { src: 'assets/img/portfolio/greek-revival-belfast-04.webp', caption: 'kitchen' },
+      { src: 'assets/img/portfolio/greek-revival-belfast-05.webp', caption: 'second floor landing' },
+      { src: 'assets/img/portfolio/greek-revival-belfast-06.webp', caption: 'bathrooms' },
     ],
   },
 
   {
     id: 12,
-    priority: 4,
+    priority: 8,
     name: 'Modern Colonial',
         status: 'completed',
     type: 'new-construction',
@@ -111,7 +114,7 @@ export const projects = [
 
   {
     id: 16,
-    priority: 6,
+    priority: 9,
     name: 'Modern Bungalow',
     type: 'new-construction',
         status: 'completed',
@@ -142,7 +145,7 @@ export const projects = [
 
   {
     id: 11,
-    priority: 8,
+    priority: 4,
     name: 'Modern Bungalow',
     type: 'new-construction',
     status: 'completed',
@@ -152,15 +155,18 @@ export const projects = [
     hero: 'assets/img/portfolio/modern-bungalow-lincolnville-hero.webp',
     delivery_url: null,
     gallery: [
-      { src: 'assets/img/portfolio/modern-bungalow-lincolnville-00.webp', caption: 'southeast elevation' },
-      { src: 'assets/img/portfolio/modern-bungalow-lincolnville-01.webp', caption: 'foundation' },
-      { src: 'assets/img/portfolio/modern-bungalow-lincolnville-02.webp', caption: 'framing' },
+      { src: 'assets/img/portfolio/modern-bungalow-lincolnville-00.webp', caption: 'south elevation' },
+      { src: 'assets/img/portfolio/modern-bungalow-lincolnville-01.webp', caption: 'east elevation' },
+      { src: 'assets/img/portfolio/modern-bungalow-lincolnville-02.webp', caption: 'living room' },
+      { src: 'assets/img/portfolio/modern-bungalow-lincolnville-03.webp', caption: 'kitchen' },
+      { src: 'assets/img/portfolio/modern-bungalow-lincolnville-04.webp', caption: 'screen porch' },
+      { src: 'assets/img/portfolio/modern-bungalow-lincolnville-05.webp', caption: 'office above garage' },
     ],
   },
 
   {
     id: 9,
-    priority: 9,
+    priority: 6,
     name: 'Modern Bungalow with ADU',
     type: 'new-construction',
     status: 'completed',
