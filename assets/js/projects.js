@@ -39,7 +39,7 @@ export const projects = [
 
   {
     id: 14,
-    priority: 2,
+    priority: 11,
     name: 'Modern Bungalow',
     status: 'current',
     type: 'new-construction',
@@ -145,7 +145,7 @@ export const projects = [
 
   {
     id: 11,
-    priority: 4,
+    priority: 2,
     name: 'Modern Bungalow',
     type: 'new-construction',
     status: 'completed',
@@ -166,7 +166,7 @@ export const projects = [
 
   {
     id: 9,
-    priority: 6,
+    priority: 4,
     name: 'Modern Bungalow with ADU',
     type: 'new-construction',
     status: 'completed',
@@ -176,9 +176,11 @@ export const projects = [
     hero: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-2-hero.webp',
     delivery_url: null,
     gallery: [
-      { src: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-2-01.webp', caption: '' },
-      { src: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-2-02.webp', caption: '' },
-      { src: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-2-03.webp', caption: '' },
+      { src: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-2-00.webp', caption: 'south elevation' },
+      { src: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-2-01.webp', caption: 'alternate dwelling unit (ADU)' },
+      { src: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-2-02.webp', caption: 'southwest elevation' },
+      { src: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-2-03.webp', caption: 'drywall in progress' },
+      { src: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-2-04.webp', caption: 'primary bedroom egress' },
     ],
   },
 
@@ -208,12 +210,14 @@ export const projects = [
     year: 2020,
     location: 'Lincolnville, ME',
     featured: false,
-    hero: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-hero.webp',
+    hero: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-1-hero.webp',
     delivery_url: null,
     gallery: [
-      { src: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-01.webp', caption: '' },
-      { src: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-02.webp', caption: '' },
-      { src: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-03.webp', caption: '' },
+      { src: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-1-00.webp', caption: '' },
+      { src: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-1-01.webp', caption: '' },
+      { src: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-1-02.webp', caption: '' },
+      { src: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-1-03.webp', caption: '' },
+      { src: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-1-04.webp', caption: '' },
     ],
   },
 
