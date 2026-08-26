@@ -114,7 +114,7 @@ export const projects = [
 
   {
     id: 16,
-    priority: 9,
+    priority: 14,
     name: 'Modern Bungalow',
     type: 'new-construction',
         status: 'completed',
@@ -123,12 +123,15 @@ export const projects = [
     featured: false,
     hero: 'assets/img/portfolio/modern-bungalow-swanville-hero.webp',
     delivery_url: null,
-    gallery: [],
+    gallery: [
+
+      { src: 'assets/img/portfolio/modern-bungalow-swanville-02.webp', caption: ' ' },
+    ],
   },
 
   {
     id: 15,
-    priority: 7,
+    priority: 14,
     name: 'Pool Enclosure',
     type: 'new-construction',
     status: 'completed',
@@ -246,7 +249,7 @@ export const projects = [
 
   {
     id: 18,
-    priority: 13,
+    priority: 9,
     name: 'Renovation & Addition',
     type: 'renovation',
     status: 'completed',
@@ -295,7 +298,7 @@ export const projects = [
 
   {
     id: 2,
-    priority: 16,
+    priority: 9,
     name: 'Modern Cottage',
     type: 'new-construction',
     status: 'completed',
@@ -308,6 +311,9 @@ export const projects = [
       { src: 'assets/img/portfolio/modern-cottage-northport-01.webp', caption: '' },
       { src: 'assets/img/portfolio/modern-cottage-northport-02.webp', caption: '' },
       { src: 'assets/img/portfolio/modern-cottage-northport-03.webp', caption: '' },
+      { src: 'assets/img/portfolio/modern-cottage-northport-04.webp', caption: '' },
+      { src: 'assets/img/portfolio/modern-cottage-northport-05.webp', caption: '' },
+      { src: 'assets/img/portfolio/modern-cottage-northport-06.webp', caption: '' },
     ],
   },
 
