@@ -1,4 +1,5 @@
 // assets/js/projects.js
+// 8/30/2026
 // Project data — controls grid display order, filter categories,
 // hero images, GLightbox galleries, and delivery page links.
 // 08/26/2026
@@ -12,14 +13,15 @@
 //
 // Image paths are relative to index.html (project root).
 // All portfolio images live in assets/img/portfolio/
+// Grid display is limited to 12 cards by default, but can be expanded by changing the filter in the code below
+  // ── Secondary — available for grid expansion ───────────────────
+  // Set priority > 12 to keep out of default 12-card grid.
+  // Reduce priority to promote into the main grid.
 
 export const projects = [
-
-  // ── Current / In Progress ─────────────────────────────────────
-
   {
     id: 13,
-    priority: 1,
+    priority: 2,
     name: 'Modern Bungalow',
     status: 'current',
     type: 'new-construction',
@@ -36,10 +38,9 @@ export const projects = [
       {src: 'assets/img/portfolio/modern-bungalow-camden-04.webp', caption: 'mechanical room 1'},
     ],
   },
-
   {
     id: 14,
-    priority: 11,
+    priority: 3,
     name: 'Modern Bungalow',
     status: 'current',
     type: 'new-construction',
@@ -52,19 +53,16 @@ export const projects = [
       {src: 'assets/img/portfolio/modern-bungalow-phillips-00.webp', caption: 'deck framing'},
       {src: 'assets/img/portfolio/modern-bungalow-phillips-01.webp', caption: 'framing'},],
   },
-
-  // ── Recent Completed ──────────────────────────────────────────
-
   {
     id: 10,
-    priority: 3,
+    priority: 4,
     name: 'Modernist Greek Revival Cottage',
     status: 'completed',
     type: 'new-construction',
     year: 2024,
     location: 'Belfast, ME',
     featured: true,
-    hero: 'assets/img/portfolio/greek-revival-belfast-hero.webp',
+    hero: 'assets/img/portfolio/greek-revival-belfast-hero-bw.webp',
     delivery_url: null,
     gallery: [
       { src: 'assets/img/portfolio/greek-revival-belfast-00.webp', caption: 'southeast elevation' },
@@ -76,7 +74,6 @@ export const projects = [
       { src: 'assets/img/portfolio/greek-revival-belfast-06.webp', caption: 'bathrooms' },
     ],
   },
-
   {
     id: 12,
     priority: 8,
@@ -86,14 +83,13 @@ export const projects = [
     year: 2024,
     location: 'Liberty, ME',
     featured: true,
-    hero: 'assets/img/portfolio/modern-colonial-liberty-hero.webp',
+    hero: 'assets/img/portfolio/modern-colonial-liberty-hero-bw.webp',
     delivery_url: null,
     gallery: [
       { src: 'assets/img/portfolio/modern-colonial-liberty-00.webp', caption: '' },
       { src: 'assets/img/portfolio/modern-colonial-liberty-01.webp', caption: '' },
     ],
   },
-
   {
     id: 17,
     priority: 5,
@@ -111,7 +107,6 @@ export const projects = [
       { src: 'assets/img/portfolio/modern-aframe-lincolnville-02.webp', caption: 'interior' },
     ],
   },
-
   {
     id: 16,
     priority: 14,
@@ -145,7 +140,6 @@ export const projects = [
       { src: 'assets/img/portfolio/pool-enclosure-camden-02.webp', caption: 'Endless Pool ' },
     ],
   },
-
   {
     id: 11,
     priority: 2,
@@ -166,7 +160,6 @@ export const projects = [
       { src: 'assets/img/portfolio/modern-bungalow-lincolnville-05.webp', caption: 'office above garage' },
     ],
   },
-
   {
     id: 9,
     priority: 4,
@@ -176,7 +169,7 @@ export const projects = [
     year: 2022,
     location: 'Lincolnville, ME',
     featured: false,
-    hero: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-2-hero.webp',
+    hero: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-2-hero-bw.webp',
     delivery_url: null,
     gallery: [
       { src: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-2-00.webp', caption: 'south elevation' },
@@ -186,10 +179,9 @@ export const projects = [
       { src: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-2-04.webp', caption: 'primary bedroom egress' },
     ],
   },
-
   {
     id: 6,
-    priority: 10,
+    priority: 18,
     name: 'Sauna',
     type: 'new-construction',
     status: 'completed',
@@ -203,7 +195,6 @@ export const projects = [
       { src: 'assets/img/portfolio/sauna-camden-02.webp', caption: '' },
     ],
   },
-
   {
     id: 5,
     priority: 11,
@@ -223,7 +214,6 @@ export const projects = [
       { src: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-1-04.webp', caption: '' },
     ],
   },
-
   {
     id: 3,
     priority: 12,
@@ -243,9 +233,7 @@ export const projects = [
     ],
   },
 
-  // ── Secondary — available for grid expansion ───────────────────
-  // Set priority > 12 to keep out of default 12-card grid.
-  // Reduce priority to promote into the main grid.
+
 
   {
     id: 18,
@@ -334,7 +322,22 @@ export const projects = [
       { src: 'assets/img/portfolio/renovation-addition-liberty-03.webp', caption: '' },
     ],
   },
+  {
+    id: 18,
+    priority: 1,
+    name: 'Modern Cottage',
+    type: 'new-construction',
+    status: 'current',
+    year: 2026,
+    location: 'South Thomaston, ME',
+    featured: false,
+    hero: 'assets/img/portfolio/modern-cottage-south-thomaston-hero.webp',
+    delivery_url: null,
+    gallery: [
+        { src: 'assets/img/portfolio/renovation-addition-south-thomaston-00.webp', caption: '' },
 
+    ],
+  },
 ];
 
 // ── Helpers ──────────────────────────────────────────────────────
@@ -342,8 +345,8 @@ export const projects = [
 // Projects sorted by priority
 export const projectsSorted = [...projects].sort((a, b) => a.priority - b.priority);
 
-// Top 12 for default grid display
-export const projectsGrid = projectsSorted.filter(p => p.priority <= 18);
+// Top count for default grid display - set to display all for now 08/27/2026
+export const projectsGrid = projectsSorted.filter(p => p.priority <= 22);
 
 // Featured projects for hero slideshow (up to 5)
 export const projectsFeatured = projectsSorted
