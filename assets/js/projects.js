@@ -233,8 +233,6 @@ export const projects = [
     ],
   },
 
-
-
   {
     id: 18,
     priority: 9,

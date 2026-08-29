@@ -35,9 +35,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-  <!-- GLightbox -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
-
   <style>
     /* ── Base ─────────────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; }
@@ -130,48 +127,23 @@
       position: relative;
       overflow: hidden;
       aspect-ratio: 4/3;
-      cursor: default;
-      background: #d1d8d4;
+      cursor: pointer;
     }
     .project-card img {
       width: 100%; height: 100%;
       object-fit: cover;
       transition: transform 0.5s ease;
-      display: block;
     }
     .project-card:hover img { transform: scale(1.04); }
-    .card-overlay {
+    .project-card-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(30,42,38,0.82) 0%, transparent 55%);
+      background: linear-gradient(to top, rgba(30,42,38,0.75) 0%, transparent 55%);
       opacity: 0;
       transition: opacity 0.3s ease;
       display: flex; align-items: flex-end;
       padding: 1.25rem;
     }
-    .project-card:hover .card-overlay { opacity: 1; }
-
-    /* Gallery photo-count badge */
-    .gallery-badge {
-      position: absolute; top: 0.75rem; right: 0.75rem;
-      background: rgba(30,42,38,0.65);
-      color: rgba(244,245,243,0.85);
-      font-size: 0.65rem;
-      letter-spacing: 0.07em;
-      padding: 0.25rem 0.5rem;
-      display: flex; align-items: center; gap: 0.3rem;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .project-card:hover .gallery-badge { opacity: 1; }
-
-    /* Missing image fallback */
-    .img-missing {
-      width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      background: #d1d8d4;
-      color: rgba(30,42,38,0.3); font-size: 0.72rem;
-      text-align: center; padding: 1rem; line-height: 1.5;
-    }
+    .project-card:hover .project-card-overlay { opacity: 1; }
 
     /* ── Filter buttons ───────────────────────────────── */
     .filter-btn {
@@ -341,8 +313,8 @@
 
     <!-- Wordmark -->
     <a href="#hero" class="flex flex-col leading-none">
-      <span style="font-family:'Lora',serif;font-size:1rem;font-weight:700;color:#f4f5f3;letter-spacing:0.02em;transition:color 0.3s;" id="nav-wordmark">Northridge Construction</span>
-      <span style="font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(244,245,243,0.55);transition:color 0.3s;" id="nav-sub">LLC · Union, Maine</span>
+      <span style="font-family:'Lora',serif;font-size:2rem;font-weight:900;color:#f4f5f3;letter-spacing:0.02em;transition:color 0.3s;" id="nav-wordmark">Northridge Construction</span>
+      <span style="font-size:1.0rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(244,245,243,0.55);transition:color 0.3s;" id="nav-sub">LLC · Union, Maine</span>
     </a>
 
     <!-- Desktop links -->
@@ -397,7 +369,7 @@
     <div class="max-w-7xl mx-auto">
       <p style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(244,245,243,0.65);margin-bottom:0.75rem;">Mid-coast Maine · High-Performance Residential</p>
       <h1 style="font-family:'Lora',serif;font-size:clamp(2rem,5vw,3.75rem);font-weight:700;color:#f4f5f3;line-height:1.1;max-width:720px;margin-bottom:1.25rem;">
-        Crafted homes.<br/>Transparent costs.<br/>Trusted tradespeople.
+        Crafted homes.<br/>Detailed costs.<br/>Top-notch team.
       </h1>
       <div style="display:flex;gap:1rem;flex-wrap:wrap;">
         <a href="#your-project" class="btn-primary">Estimate Your Project</a>
@@ -420,16 +392,16 @@
 
       <div class="reveal">
         <p class="section-eyebrow">About Northridge</p>
-        <h2 class="section-title">A builder whose strength is knowing what things cost</h2>
+        <h2 class="section-title">A builder whose strength is knowing and managing cost</h2>
         <div class="section-rule"></div>
         <p style="color:#3a4a44;line-height:1.8;margin-bottom:1rem;">
-          Northridge Construction LLC was founded by Mike Martin in 2017 to bring premium residential construction services to Maine's Mid-coast counties. We specialize in high-performance, energy-efficient homes — built tight, built right, and built to last.
+          Northridge Construction LLC was founded by Mike Martin in 2017 to bring premium residential construction services to Maine's Mid-coast. We specialize in high-performance, energy-efficient new residential construction and renovations.
         </p>
         <p style="color:#3a4a44;line-height:1.8;margin-bottom:1rem;">
-          We don't offer architectural design. What we offer is something harder to find: a general contractor who can tell you, before you break ground, exactly where your money is going — and who takes responsibility for holding that line from start to finish.
+          We start with your site and architectural design. Then we provide you with a detailed cost estimate and work transparently with you to fit your budget. [add link to example]
         </p>
         <p style="color:#3a4a44;line-height:1.8;">
-          Every project begins with a detailed cost estimate. Every subcontractor we bring to your site has worked with us before. That network — and the transparency we build around it — is what sets Northridge apart.
+          Once the project starts, the cost tracking begins. Every subcontractor we bring to your site has worked with us before. That network — and the transparency we build around it — is one of Northridge's strengths.
         </p>
       </div>
 
@@ -481,12 +453,99 @@
       </div>
     </div>
 
-    <div id="project-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-    </div>
+    <div id="project-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-fog-dark">
 
-    <!-- Hidden GLightbox anchor pool -->
-    <div id="lightbox-anchors" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;" aria-hidden="true"></div>
+      <div class="project-card reveal" data-category="current" style="background:#e8eae6;">
+        <img src="assets/img/portfolio/portfolio-12.jpg" alt="Modern Colonial — current project" loading="lazy" />
+        <div class="project-card-overlay">
+          <div>
+            <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,245,243,0.6);margin-bottom:0.25rem;">Current · New Construction</p>
+            <p style="font-family:'Lora',serif;font-size:1rem;font-weight:600;color:#f4f5f3;">Modern Colonial</p>
+          </div>
+        </div>
+      </div>
 
+      <div class="project-card reveal" data-category="current" style="background:#e8eae6;transition-delay:0.05s">
+        <img src="assets/img/portfolio/portfolio-10.jpg" alt="Modernist Greek Revival Cottage" loading="lazy" />
+        <div class="project-card-overlay">
+          <div>
+            <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,245,243,0.6);margin-bottom:0.25rem;">Current · New Construction</p>
+            <p style="font-family:'Lora',serif;font-size:1rem;font-weight:600;color:#f4f5f3;">Modernist Greek Revival Cottage</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="current" style="background:#e8eae6;transition-delay:0.1s">
+        <img src="assets/img/portfolio/portfolio-9.jpg" alt="Modern Bungalow with ADU" loading="lazy" />
+        <div class="project-card-overlay">
+          <div>
+            <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,245,243,0.6);margin-bottom:0.25rem;">Current · New Construction</p>
+            <p style="font-family:'Lora',serif;font-size:1rem;font-weight:600;color:#f4f5f3;">Modern Bungalow with ADU</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="new-construction" style="background:#e8eae6;transition-delay:0.05s">
+        <img src="assets/img/portfolio/portfolio-3.jpg" alt="Modern Colonial" loading="lazy" />
+        <div class="project-card-overlay">
+          <div>
+            <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,245,243,0.6);margin-bottom:0.25rem;">New Construction</p>
+            <p style="font-family:'Lora',serif;font-size:1rem;font-weight:600;color:#f4f5f3;">Modern Colonial</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="new-construction" style="background:#e8eae6;transition-delay:0.1s">
+        <img src="assets/img/portfolio/portfolio-2.jpg" alt="Modern Cottage" loading="lazy" />
+        <div class="project-card-overlay">
+          <div>
+            <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,245,243,0.6);margin-bottom:0.25rem;">New Construction</p>
+            <p style="font-family:'Lora',serif;font-size:1rem;font-weight:600;color:#f4f5f3;">Modern Cottage</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="new-construction" style="background:#e8eae6;transition-delay:0.15s">
+        <img src="assets/img/portfolio/portfolio-4.jpg" alt="Modern Farmhouse" loading="lazy" />
+        <div class="project-card-overlay">
+          <div>
+            <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,245,243,0.6);margin-bottom:0.25rem;">New Construction</p>
+            <p style="font-family:'Lora',serif;font-size:1rem;font-weight:600;color:#f4f5f3;">Modern Farmhouse</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="new-construction" style="background:#e8eae6;transition-delay:0.05s">
+        <img src="assets/img/portfolio/portfolio-8.jpg" alt="Modern Barn" loading="lazy" />
+        <div class="project-card-overlay">
+          <div>
+            <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,245,243,0.6);margin-bottom:0.25rem;">New Construction</p>
+            <p style="font-family:'Lora',serif;font-size:1rem;font-weight:600;color:#f4f5f3;">Modern Barn</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="new-construction" style="background:#e8eae6;transition-delay:0.1s">
+        <img src="assets/img/portfolio/portfolio-5.jpg" alt="Bungalow" loading="lazy" />
+        <div class="project-card-overlay">
+          <div>
+            <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,245,243,0.6);margin-bottom:0.25rem;">New Construction</p>
+            <p style="font-family:'Lora',serif;font-size:1rem;font-weight:600;color:#f4f5f3;">Bungalow</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal" data-category="renovation" style="background:#e8eae6;transition-delay:0.05s">
+        <img src="assets/img/portfolio/portfolio-1.jpg" alt="Renovation / Addition" loading="lazy" />
+        <div class="project-card-overlay">
+          <div>
+            <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,245,243,0.6);margin-bottom:0.25rem;">Renovation / Addition</p>
+            <p style="font-family:'Lora',serif;font-size:1rem;font-weight:600;color:#f4f5f3;">Renovation / Addition</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /project-grid -->
   </div>
 </section>
 
@@ -499,38 +558,35 @@
 
     <div class="reveal max-w-2xl mb-14">
       <p class="section-eyebrow">How We Work</p>
-      <h2 class="section-title">Delivery — Cost Transparency in Practice</h2>
+      <h2 class="section-title">Delivery — Detailed Cost Examples</h2>
       <div class="section-rule"></div>
       <p style="color:#3a4a44;line-height:1.8;">
-        Before we break ground, you receive a detailed cost estimate broken down by trade. No lump-sum mystery numbers. The pages below document completed projects — what was built, how it was organized, and what it actually cost — so you can walk into a conversation with Northridge already knowing what to expect.
+        You receive a detailed cost estimate broken down by trade as part of delivery development which becomes a contract attachment. The estimate includes "hard" subcontracted costs and allowances for customer selections. No lump-sum mystery numbers. The pages below document completed projects — what was built, how it was organized, and what it actually cost.
       </p>
     </div>
 
-    <!-- Case study cards -->
+    <!-- Case study cards — placeholders; will link to /delivery/*.html -->
     <div class="grid md:grid-cols-3 gap-px bg-fog-dark">
 
       <a href="delivery/sample-estimate-1.html" class="reveal group" style="background:#faf9f7;padding:2rem;text-decoration:none;transition:background 0.2s ease;display:block;" onmouseover="this.style.background='#f0f2ef'" onmouseout="this.style.background='#faf9f7'">
-        <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#6b7f78;margin-bottom:0.75rem;">New Construction · 2023</p>
-        <h3 style="font-family:'Lora',serif;font-size:1.2rem;font-weight:600;color:#1e2a26;margin-bottom:0.5rem;">1,900 sf Home — Camden, ME</h3>
-        <p style="font-size:0.85rem;color:#3a4a44;line-height:1.6;margin-bottom:1.25rem;">Complete trade-by-trade building estimate for a high-performance new construction home. The transparency of this estimate was cited by the client as a key reason for choosing Northridge.</p>
-        <p style="font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:#3d6b5a;font-weight:600;">View Estimate →</p>
+        <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#6b7f78;margin-bottom:0.75rem;">New Construction · 2024</p>
+        <h3 style="font-family:'Lora',serif;font-size:1.2rem;font-weight:600;color:#1e2a26;margin-bottom:0.5rem;">Modern Colonial</h3>
+        <p style="font-size:0.85rem;color:#3a4a44;line-height:1.6;margin-bottom:1.25rem;">1,900 sf · 3 bed · 2.5 bath. Detailed trade-by-trade cost breakdown for a high-performance new construction home completed in Midcoast Maine.</p>
+        <p style="font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:#3d6b5a;font-weight:600;">View Cost Study →</p>
       </a>
 
-      <!--
-      Additional case studies will be added here as projects are documented.
-
-      <div class="reveal" style="background:#faf9f7;padding:2rem;transition-delay:0.08s">
+      <!-- Placeholder cards — to be completed as case studies are written -->
+      <div class="reveal" style="background:#faf9f7;padding:2rem;opacity:0.45;transition-delay:0.08s">
         <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#6b7f78;margin-bottom:0.75rem;">New Construction · Coming Soon</p>
         <h3 style="font-family:'Lora',serif;font-size:1.2rem;font-weight:600;color:#1e2a26;margin-bottom:0.5rem;">Modern Farmhouse</h3>
         <p style="font-size:0.85rem;color:#3a4a44;line-height:1.6;">Cost study in preparation.</p>
       </div>
 
-      <div class="reveal" style="background:#faf9f7;padding:2rem;transition-delay:0.16s">
+      <div class="reveal" style="background:#faf9f7;padding:2rem;opacity:0.45;transition-delay:0.16s">
         <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#6b7f78;margin-bottom:0.75rem;">Renovation · Coming Soon</p>
         <h3 style="font-family:'Lora',serif;font-size:1.2rem;font-weight:600;color:#1e2a26;margin-bottom:0.5rem;">Renovation / Addition</h3>
         <p style="font-size:0.85rem;color:#3a4a44;line-height:1.6;">Cost study in preparation.</p>
       </div>
-      -->
 
     </div>
   </div>
@@ -538,7 +594,7 @@
 
 
 <!-- ══════════════════════════════════════════════
-     YOUR PROJECT COST
+     YOUR PROJECT COST  (interactive estimator)
 ══════════════════════════════════════════════ -->
 <section id="your-project" style="background:#1e2a26;padding:5rem 1.5rem;">
   <div class="max-w-7xl mx-auto" style="padding:0 1rem;">
@@ -548,11 +604,74 @@
       <h2 style="font-family:'Lora',serif;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:700;color:#f4f5f3;line-height:1.2;margin-bottom:1rem;">Your Project Cost</h2>
       <div style="width:2.5rem;height:2px;background:#3d6b5a;margin-bottom:1.5rem;"></div>
       <p style="color:rgba(244,245,243,0.65);line-height:1.8;font-size:0.9rem;">
-        Build your room program and get a rough order-of-magnitude cost estimate — broken down by trade, based on current Midcoast Maine project data. This is a planning tool, not a contract or bid.
+        Add your proposed spaces below. We'll apply current Midcoast Maine unit costs to give you a rough order-of-magnitude estimate — broken down by trade. This is a planning tool, not a contract. Contact us for an actual estimate.
       </p>
-      <a href="estimator-dev.html" style="display:inline-block;margin-top:2rem;padding:0.75rem 2rem;background:#3d6b5a;color:#fff;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#2e5244'" onmouseout="this.style.background='#3d6b5a'">Open Project Cost Estimator →</a>
     </div>
 
+    <div class="grid lg:grid-cols-2 gap-12">
+
+      <!-- Left: space input -->
+      <div class="reveal">
+        <div style="display:flex;gap:0.5rem;align-items:center;margin-bottom:0.75rem;">
+          <span style="font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,245,243,0.4);flex:1;">Space Name</span>
+          <span style="font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,245,243,0.4);width:100px;text-align:right;">Area (sf)</span>
+          <span style="width:28px;"></span>
+        </div>
+
+        <div id="space-list" style="display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1rem;"></div>
+
+        <!-- Add row -->
+        <div style="display:flex;gap:0.5rem;align-items:center;">
+          <input id="input-name" class="estimator-input" type="text" placeholder="e.g. Primary Bedroom" style="flex:1;" />
+          <input id="input-area" class="estimator-input" type="number" placeholder="sf" style="width:100px;text-align:right;" min="1" />
+          <button onclick="addSpace()" style="width:28px;height:36px;background:#3d6b5a;color:#fff;border:none;cursor:pointer;font-size:1.1rem;flex-shrink:0;" title="Add space">+</button>
+        </div>
+        <p style="font-size:0.7rem;color:rgba(244,245,243,0.3);margin-top:0.5rem;">Press Enter or + to add a space. Click × to remove.</p>
+
+        <!-- Total sf -->
+        <div style="margin-top:2rem;padding-top:1.25rem;border-top:1px solid rgba(244,245,243,0.1);">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;">
+            <span style="font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;color:rgba(244,245,243,0.5);">Total Conditioned Area</span>
+            <span id="total-sf" style="font-family:'Lora',serif;font-size:1.75rem;font-weight:700;color:#f4f5f3;">0 sf</span>
+          </div>
+        </div>
+
+        <!-- Rate note -->
+        <p style="font-size:0.72rem;color:rgba(244,245,243,0.35);margin-top:1rem;line-height:1.6;">
+          Unit cost: <strong style="color:rgba(244,245,243,0.55);">$390/sf</strong> · 2025 Midcoast Maine · conditioned space only.
+          Site work, land, design fees, and permits not included.
+        </p>
+      </div>
+
+      <!-- Right: cost breakdown -->
+      <div class="reveal" style="transition-delay:0.1s">
+        <div id="estimator-placeholder" style="height:100%;display:flex;align-items:center;justify-content:center;border:1px dashed rgba(244,245,243,0.12);padding:2rem;text-align:center;">
+          <p style="font-size:0.85rem;color:rgba(244,245,243,0.3);line-height:1.7;">Add your first space<br/>to see the cost breakdown.</p>
+        </div>
+
+        <div id="cost-breakdown" style="display:none;">
+          <p style="font-size:0.65rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,245,243,0.4);margin-bottom:0.75rem;">Estimated Cost Breakdown</p>
+          <table class="cost-table">
+            <thead>
+              <tr>
+                <th>Trade / Division</th>
+                <th style="text-align:right;">Estimated Cost</th>
+              </tr>
+            </thead>
+            <tbody id="cost-rows"></tbody>
+            <tfoot>
+              <tr class="total">
+                <td>Total Rough Estimate</td>
+                <td id="cost-total"></td>
+              </tr>
+            </tfoot>
+          </table>
+
+          <a href="#contact" style="display:inline-block;margin-top:2rem;padding:0.7rem 1.75rem;background:#3d6b5a;color:#fff;font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#2e5244'" onmouseout="this.style.background='#3d6b5a'">Contact Northridge for a real estimate →</a>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -567,7 +686,7 @@
       <p class="section-eyebrow">The People</p>
       <h2 class="section-title">The Northridge Team</h2>
       <div class="section-rule"></div>
-      <p style="color:#3a4a44;line-height:1.8;">Mike Martin doesn't build alone. Every trade on a Northridge project is a partner who has worked with us before — people whose quality and character we stand behind.</p>
+      <p style="color:#3a4a44;line-height:1.8;">Every trade on a Northridge project is a partner who has worked with us on many projects.</p>
     </div>
 
     <!-- Mike — featured -->
@@ -588,14 +707,16 @@
           <p style="font-size:0.85rem;color:#3a4a44;line-height:1.65;">Keeps the office running — scheduling, correspondence, and project administration.</p>
         </div>
       </div>
-      <div style="background:#f0f2ef;padding:2rem;display:flex;gap:1.25rem;align-items:flex-start;">
+
+      <!-- <div style="background:#f0f2ef;padding:2rem;display:flex;gap:1.25rem;align-items:flex-start;">
         <img src="assets/img/team/team-3.jpg" alt="Donny Manson" style="width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;" />
         <div>
           <p style="font-family:'Lora',serif;font-size:1.1rem;font-weight:600;color:#1e2a26;">Donny Manson</p>
           <p style="font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;color:#3d6b5a;margin:0.25rem 0 0.75rem;">Specialist</p>
           <p style="font-size:0.85rem;color:#3a4a44;line-height:1.65;">On-site specialist and trusted crew member.</p>
         </div>
-      </div>
+      </div> -->
+
     </div>
 
     <!-- Subcontractor network -->
@@ -629,6 +750,11 @@
         </div>
 
         <div style="background:#faf9f7;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem;">
+          <img src="assets/img/team/team-4.jpg" alt="Tim Dube" style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;" />
+          <div><p style="font-size:0.875rem;font-weight:500;color:#1e2a26;">Donny Manson</p><p style="font-size:0.72rem;color:#6b7f78;">Manson Finishes</p></div>
+        </div>
+
+        <div style="background:#faf9f7;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem;">
           <img src="assets/img/team/team-9.jpg" alt="Jeff Niess" style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;" />
           <div><p style="font-size:0.875rem;font-weight:500;color:#1e2a26;">Jeff Niess</p><p style="font-size:0.72rem;color:#6b7f78;">Niess Tile</p></div>
         </div>
@@ -638,6 +764,22 @@
           <div><p style="font-size:0.875rem;font-weight:500;color:#1e2a26;">Kevin Gray</p><p style="font-size:0.72rem;color:#6b7f78;">Kenney &amp; Gray Electric</p></div>
         </div>
 
+        <div style="background:#faf9f7;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem;">
+          <img src="assets/img/team/team-11.jpg" alt="Svea Tullberg" style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;" />
+          <div><p style="font-size:0.875rem;font-weight:500;color:#1e2a26;">Svea Tullberg</p><p style="font-size:0.72rem;color:#6b7f78;"> Maine Blower Door Testing</p></div>
+        </div>
+        <div style="background:#faf9f7;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem;">
+          <img src="assets/img/team/team-11.jpg" alt="team 10" style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;" />
+          <div><p style="font-size:0.875rem;font-weight:500;color:#1e2a26;"></p><p style="font-size:0.72rem;color:#6b7f78;">g</p></div>
+        </div>
+        <div style="background:#faf9f7;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem;">
+          <img src="assets/img/team/team-11.jpg" alt="team 11" style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;" />
+          <div><p style="font-size:0.875rem;font-weight:500;color:#1e2a26;"></p><p style="font-size:0.72rem;color:#6b7f78;"> </p></div>
+        </div>
+        <div style="background:#faf9f7;padding:1.25rem 1.5rem;display:flex;align-items:center;gap:1rem;">
+          <img src="assets/img/team/team-11.jpg" alt="team 12" style="width:48px;height:48px;border-radius:50%;object-fit:cover;flex-shrink:0;" />
+          <div><p style="font-size:0.875rem;font-weight:500;color:#1e2a26;"></p><p style="font-size:0.72rem;color:#6b7f78;"> </p></div>
+        </div>
       </div>
     </div>
   </div>
@@ -668,7 +810,7 @@
 
       <div class="testimonial-card reveal" style="transition-delay:0.08s">
         <p style="font-family:'Lora',serif;font-style:italic;font-size:1rem;color:#1e2a26;line-height:1.75;margin-bottom:1.25rem;">
-          Not only is Mike a genuinely nice individual but also an honest, transparent, and quality professional builder. He has cultivated the finest and best subcontractors that Maine has to offer. Their attention to precision and detail are unmatched anywhere. For us, having Mike and his outstanding crew build our home was like hitting the lottery. We applaud and praise all of them with a multitude of thanks and appreciation.
+          Not only is Mike a genuinely nice individual but also an honest, transparent, and quality professional builder. He has cultivated the finest subcontractors that Maine has to offer. Their attention to precision and detail are unmatched anywhere.
         </p>
         <p style="font-size:0.875rem;font-weight:500;color:#1e2a26;">Frank Garnier &amp; Joseph Lipscomb</p>
         <p style="font-size:0.72rem;letter-spacing:0.06em;color:#6b7f78;text-transform:uppercase;">Lincolnville, ME</p>
@@ -704,22 +846,6 @@
         </p>
         <p style="font-size:0.875rem;font-weight:500;color:#1e2a26;">Debbie Wolozin</p>
         <p style="font-size:0.72rem;letter-spacing:0.06em;color:#6b7f78;text-transform:uppercase;">Palermo, ME</p>
-      </div>
-
-      <div class="testimonial-card reveal" style="transition-delay:0.04s">
-        <p style="font-family:'Lora',serif;font-style:italic;font-size:1rem;color:#1e2a26;line-height:1.75;margin-bottom:1.25rem;">
-          Mike, we can't thank you enough for the beautiful home you've made for us. Thank you from the bottom of our hearts.
-        </p>
-        <p style="font-size:0.875rem;font-weight:500;color:#1e2a26;">Cait Sonia</p>
-        <p style="font-size:0.72rem;letter-spacing:0.06em;color:#6b7f78;text-transform:uppercase;">Lincolnville, ME</p>
-      </div>
-
-      <div class="testimonial-card reveal" style="transition-delay:0.12s">
-        <p style="font-family:'Lora',serif;font-style:italic;font-size:1rem;color:#1e2a26;line-height:1.75;margin-bottom:1.25rem;">
-          Mike's subcontractors were great people — on time and did excellent work. We are very happy with the project.
-        </p>
-        <p style="font-size:0.875rem;font-weight:500;color:#1e2a26;">Lew Purington</p>
-        <p style="font-size:0.72rem;letter-spacing:0.06em;color:#6b7f78;text-transform:uppercase;">Somerville, ME</p>
       </div>
 
     </div>
@@ -801,16 +927,12 @@
 
         <div style="display:flex;flex-direction:column;gap:1rem;">
           <div style="display:flex;align-items:center;gap:0.875rem;">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5C5.5 1.5 3.5 3.5 3.5 6c0 3.5 4.5 8.5 4.5 8.5s4.5-5 4.5-8.5c0-2.5-2-4.5-4.5-4.5z" stroke="#3d6b5a" stroke-width="1.25"/><circle cx="8" cy="6" r="1.5" stroke="#3d6b5a" stroke-width="1.25"/></svg>
-            <span style="font-size:0.85rem;color:rgba(244,245,243,0.6);">1774 North Union Road, Union, ME 04862</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:0.875rem;">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 3h2l1 3-1.5 1.5a9 9 0 004 4L10 10l3 1v2a1 1 0 01-1 1A11 11 0 012 4a1 1 0 011-1z" stroke="#3d6b5a" stroke-width="1.25" stroke-linecap="round"/></svg>
-            <a href="tel:+12075936089" style="font-size:0.85rem;color:rgba(244,245,243,0.6);text-decoration:none;" onmouseover="this.style.color='#a8c8b8'" onmouseout="this.style.color='rgba(244,245,243,0.6)'">(207) 593-6089</a>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#3d6b5a" stroke-width="1.25"/><path d="M8 4v4l2.5 2.5" stroke="#3d6b5a" stroke-width="1.25" stroke-linecap="round"/></svg>
+            <span style="font-size:0.85rem;color:rgba(244,245,243,0.6);">Union, Maine · Serving all of Mid-coast ME</span>
           </div>
           <div style="display:flex;align-items:center;gap:0.875rem;">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12v8a1 1 0 01-1 1H3a1 1 0 01-1-1V4z" stroke="#3d6b5a" stroke-width="1.25"/><path d="M2 4l6 5 6-5" stroke="#3d6b5a" stroke-width="1.25"/></svg>
-            <a href="mailto:NorthridgeConstructionMe@gmail.com" style="font-size:0.85rem;color:rgba(244,245,243,0.6);text-decoration:none;" onmouseover="this.style.color='#a8c8b8'" onmouseout="this.style.color='rgba(244,245,243,0.6)'">NorthridgeConstructionMe@gmail.com</a>
+            <a href="mailto:mike@northridgeconstruction.me" style="font-size:0.85rem;color:rgba(244,245,243,0.6);text-decoration:none;" onmouseover="this.style.color='#a8c8b8'" onmouseout="this.style.color='rgba(244,245,243,0.6)'">NorthridgeConstructionMe@gmail.com</a>
           </div>
         </div>
       </div>
@@ -872,8 +994,8 @@
      FOOTER
 ══════════════════════════════════════════════ -->
 <footer style="background:#141e1b;padding:2rem 2.5rem;display:flex;flex-direction:column;gap:0.5rem;align-items:center;text-align:center;">
-  <p style="font-family:'Lora',serif;font-size:0.875rem;color:rgba(244,245,243,0.4);">Northridge Construction LLC · 1774 North Union Road, Union, ME 04862</p>
-  <p style="font-size:0.7rem;color:rgba(244,245,243,0.2);letter-spacing:0.06em;">© <span id="footer-year"></span> · High-Performance Residential Construction · Mid-coast Maine · <a href="tel:+12075936089" style="color:rgba(244,245,243,0.2);text-decoration:none;">(207) 593-6089</a></p>
+  <p style="font-family:'Lora',serif;font-size:0.875rem;color:rgba(244,245,243,0.4);">Northridge Construction LLC · Union, Maine</p>
+  <p style="font-size:0.7rem;color:rgba(244,245,243,0.2);letter-spacing:0.06em;">© <span id="footer-year"></span> · High-Performance Residential Construction · Mid-coast Maine</p>
 </footer>
 
 
@@ -956,6 +1078,99 @@ const revealObserver = new IntersectionObserver(entries => {
 }, { threshold: 0.12 });
 revealEls.forEach(el => revealObserver.observe(el));
 
+// ── Cost estimator ────────────────────────────
+const RATE = 390; // $/sf — update as market shifts
+const CATEGORIES = [
+  { name: 'Site & Foundation',      share: 0.10 },
+  { name: 'Framing & Structure',    share: 0.15 },
+  { name: 'Exterior Envelope',      share: 0.14 },
+  { name: 'Roofing',                share: 0.05 },
+  { name: 'Mechanical (HVAC)',      share: 0.08 },
+  { name: 'Plumbing',               share: 0.07 },
+  { name: 'Electrical',             share: 0.07 },
+  { name: 'Insulation & Air Sealing', share: 0.06 },
+  { name: 'Interior Finishes',      share: 0.14 },
+  { name: 'Contingency & GC Fee',   share: 0.09 },
+];
+
+let spaces = [];
+
+function fmt(n) {
+  return '$' + Math.round(n).toLocaleString('en-US');
+}
+
+function renderSpaces() {
+  const list = document.getElementById('space-list');
+  list.innerHTML = '';
+  spaces.forEach((sp, i) => {
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex;gap:0.5rem;align-items:center;';
+    row.innerHTML = `
+      <input class="estimator-input" type="text" value="${sp.name}" style="flex:1;"
+        oninput="spaces[${i}].name=this.value;renderCosts();" />
+      <input class="estimator-input" type="number" value="${sp.area}" style="width:100px;text-align:right;" min="1"
+        oninput="spaces[${i}].area=Math.max(0,parseInt(this.value)||0);renderCosts();" />
+      <button onclick="removeSpace(${i})" style="width:28px;height:36px;background:transparent;color:rgba(244,245,243,0.35);border:1px solid rgba(244,245,243,0.15);cursor:pointer;font-size:0.85rem;flex-shrink:0;" title="Remove">×</button>
+    `;
+    list.appendChild(row);
+  });
+  renderCosts();
+}
+
+function renderCosts() {
+  const totalSf = spaces.reduce((s, sp) => s + sp.area, 0);
+  document.getElementById('total-sf').textContent = totalSf.toLocaleString('en-US') + ' sf';
+
+  const placeholder = document.getElementById('estimator-placeholder');
+  const breakdown   = document.getElementById('cost-breakdown');
+
+  if (totalSf === 0 || spaces.length === 0) {
+    placeholder.style.display = 'flex';
+    breakdown.style.display   = 'none';
+    return;
+  }
+
+  placeholder.style.display = 'none';
+  breakdown.style.display   = 'block';
+
+  const totalCost = totalSf * RATE;
+  const tbody = document.getElementById('cost-rows');
+  tbody.innerHTML = '';
+  CATEGORIES.forEach(cat => {
+    const cost = totalCost * cat.share;
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td>${cat.name}</td><td>${fmt(cost)}</td>`;
+    tbody.appendChild(tr);
+  });
+  document.getElementById('cost-total').textContent = fmt(totalCost);
+}
+
+function addSpace() {
+  const nameEl = document.getElementById('input-name');
+  const areaEl = document.getElementById('input-area');
+  const name   = nameEl.value.trim();
+  const area   = parseInt(areaEl.value) || 0;
+  if (!name || area <= 0) return;
+  spaces.push({ name, area });
+  nameEl.value = '';
+  areaEl.value = '';
+  nameEl.focus();
+  renderSpaces();
+}
+
+function removeSpace(i) {
+  spaces.splice(i, 1);
+  renderSpaces();
+}
+
+// Enter key adds space
+document.getElementById('input-area').addEventListener('keydown', e => {
+  if (e.key === 'Enter') addSpace();
+});
+document.getElementById('input-name').addEventListener('keydown', e => {
+  if (e.key === 'Enter') document.getElementById('input-area').focus();
+});
+
 // ── Contact form ──────────────────────────────
 document.getElementById('contact-form').addEventListener('submit', async function(e) {
   e.preventDefault();
@@ -969,7 +1184,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
   const data = Object.fromEntries(new FormData(this));
 
   try {
-    // contact-form-server endpoint — add northridgeconstruction recipient in server config
+    // Replace with your actual contact-form-server endpoint
     const res = await fetch('https://octoberengineering.com/forms/northridge/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -990,146 +1205,6 @@ document.getElementById('contact-form').addEventListener('submit', async functio
     btn.disabled = false;
   }
 });
-</script>
-
-<!-- GLightbox JS -->
-<script src="https://cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
-
-<!-- Project grid — ES module -->
-<script type="module">
-import { projectsSorted } from './assets/js/projects.js';
-
-const grid    = document.getElementById('project-grid');
-const anchors = document.getElementById('lightbox-anchors');
-
-projectsSorted.forEach(project => {
-  const hasGallery = project.gallery && project.gallery.length > 0;
-  const galleryId  = `gallery-${project.id}`;
-
-  const typeLabel = {
-    'current':          'Current',
-    'new-construction': 'New Construction',
-    'renovation':       'Renovation',
-  }[project.type] || project.type;
-
-  const statusLabel = project.status === 'current' ? 'Current · ' : '';
-
-  const card = document.createElement('div');
-  card.className = 'project-card reveal';
-  card.dataset.status = project.status;
-  card.dataset.type   = project.type;
-
-  card.innerHTML = `
-    <img
-      src="${project.hero}"
-      alt="${project.name} — ${project.location}"
-      loading="lazy"
-      onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-    />
-    <div class="img-missing" style="display:none;">
-      ${project.name}<br/>
-      <span style="font-size:0.65rem;opacity:0.6;">${project.hero.split('/').pop()}</span>
-    </div>
-    <div class="card-overlay">
-      <div>
-        <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;
-          color:rgba(244,245,243,0.6);margin-bottom:0.25rem;">
-          ${statusLabel}${typeLabel} · ${project.location} · ${project.year}
-        </p>
-        <p style="font-family:'Lora',serif;font-size:1rem;font-weight:600;color:#f4f5f3;">
-          ${project.name}
-        </p>
-        ${hasGallery
-          ? `<p style="font-size:0.7rem;color:rgba(244,245,243,0.5);margin-top:0.3rem;">
-               View ${project.gallery.length + 1} photos
-             </p>`
-          : ''}
-      </div>
-    </div>
-    ${hasGallery
-      ? `<div class="gallery-badge">
-           <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
-             <rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.25"/>
-             <circle cx="8" cy="8" r="2.5" stroke="currentColor" stroke-width="1.25"/>
-             <path d="M5 3l1.5-2h3L11 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
-           </svg>
-           ${project.gallery.length + 1}
-         </div>`
-      : ''}
-  `;
-
-  // Click behaviour
-  if (hasGallery) {
-    card.style.cursor = 'pointer';
-    card.addEventListener('click', () => {
-      const first = document.querySelector(`a[data-gallery="${galleryId}"]`);
-      if (first) first.click();
-    });
-  } else if (project.delivery_url) {
-    card.style.cursor = 'pointer';
-    card.addEventListener('click', () => { window.location.href = project.delivery_url; });
-  }
-
-  grid.appendChild(card);
-
-  // Hidden GLightbox anchors
-  if (hasGallery) {
-    const heroA = document.createElement('a');
-    heroA.href                  = project.hero;
-    heroA.className             = 'glightbox';
-    heroA.dataset.gallery       = galleryId;
-    heroA.dataset.title         = `${project.name} — ${project.location}`;
-    heroA.dataset.description   = `${project.year}`;
-    anchors.appendChild(heroA);
-
-    project.gallery.forEach(img => {
-      const a = document.createElement('a');
-      a.href                  = img.src;
-      a.className             = 'glightbox';
-      a.dataset.gallery       = galleryId;
-      a.dataset.title         = `${project.name} — ${project.location}`;
-      a.dataset.description   = img.caption || '';
-      anchors.appendChild(a);
-    });
-  }
-});
-
-// Init GLightbox
-const lightbox = GLightbox({
-  selector:        '.glightbox',
-  touchNavigation: true,
-  loop:            true,
-  openEffect:      'fade',
-  closeEffect:     'fade',
-});
-
-// Filter buttons
-const filterBtns = document.querySelectorAll('.filter-btn');
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.dataset.filter;
-    document.querySelectorAll('.project-card').forEach(card => {
-      const show = filter === 'all'
-        || (filter === 'current'          && card.dataset.status === 'current')
-        || (filter === 'new-construction' && card.dataset.type   === 'new-construction')
-        || (filter === 'renovation'       && card.dataset.type   === 'renovation');
-      card.style.display = show ? 'block' : 'none';
-    });
-  });
-});
-
-// Re-observe newly created cards for scroll reveal
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.project-card.reveal').forEach(el => revealObserver.observe(el));
 </script>
 
 </body>
