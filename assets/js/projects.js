@@ -20,7 +20,7 @@
 
 export const projects = [
   {
-    id: 13,
+    id: 1,
     priority: 2,
     name: 'Modern Bungalow',
     status: 'current',
@@ -39,8 +39,8 @@ export const projects = [
     ],
   },
   {
-    id: 14,
-    priority: 3,
+    id: 2,
+    priority: 5,
     name: 'Modern Bungalow',
     status: 'current',
     type: 'new-construction',
@@ -54,7 +54,7 @@ export const projects = [
       {src: 'assets/img/portfolio/modern-bungalow-phillips-01.webp', caption: 'framing'},],
   },
   {
-    id: 10,
+    id: 3,
     priority: 4,
     name: 'Modernist Greek Revival Cottage',
     status: 'completed',
@@ -75,8 +75,8 @@ export const projects = [
     ],
   },
   {
-    id: 12,
-    priority: 8,
+    id: 4,
+    priority: 13,
     name: 'Modern Colonial',
         status: 'completed',
     type: 'new-construction',
@@ -91,8 +91,8 @@ export const projects = [
     ],
   },
   {
-    id: 17,
-    priority: 5,
+    id: 5,
+    priority: 7,
     name: 'Modern A-Frame',
     type: 'new-construction',
         status: 'completed',
@@ -108,8 +108,8 @@ export const projects = [
     ],
   },
   {
-    id: 16,
-    priority: 14,
+    id: 6,
+    priority: 13,
     name: 'Modern Bungalow',
     type: 'new-construction',
         status: 'completed',
@@ -125,8 +125,8 @@ export const projects = [
   },
 
   {
-    id: 15,
-    priority: 14,
+    id: 7,
+    priority: 18,
     name: 'Pool Enclosure',
     type: 'new-construction',
     status: 'completed',
@@ -141,8 +141,8 @@ export const projects = [
     ],
   },
   {
-    id: 11,
-    priority: 2,
+    id: 8,
+    priority: 3,
     name: 'Modern Bungalow',
     type: 'new-construction',
     status: 'completed',
@@ -162,7 +162,7 @@ export const projects = [
   },
   {
     id: 9,
-    priority: 4,
+    priority: 6,
     name: 'Modern Bungalow with ADU',
     type: 'new-construction',
     status: 'completed',
@@ -180,7 +180,7 @@ export const projects = [
     ],
   },
   {
-    id: 6,
+    id: 10,
     priority: 18,
     name: 'Sauna',
     type: 'new-construction',
@@ -196,8 +196,8 @@ export const projects = [
     ],
   },
   {
-    id: 5,
-    priority: 11,
+    id: 11,
+    priority: 8,
     name: 'Modern Bungalow with ADU',
     type: 'new-construction',
     status: 'completed',
@@ -215,15 +215,15 @@ export const projects = [
     ],
   },
   {
-    id: 3,
-    priority: 12,
+    id: 12,
+    priority: 11,
     name: 'Modern Colonial',
     type: 'new-construction',
     status: 'completed',
     year: 2021,
     location: 'Lincolnville, ME',
     featured: false,
-    hero: 'assets/img/portfolio/modern-colonial-lincolnville-hero.webp',
+    hero: 'assets/img/portfolio/modern-colonial-lincolnville-hero-bw.webp',
     delivery_url: null,
     gallery: [
       { src: 'assets/img/portfolio/modern-colonial-lincolnville-01.webp', caption: '' },
@@ -234,7 +234,7 @@ export const projects = [
   },
 
   {
-    id: 18,
+    id: 13,
     priority: 9,
     name: 'Renovation & Addition',
     type: 'renovation',
@@ -242,14 +242,16 @@ export const projects = [
     year: 2025,
     location: 'Belfast, ME',
     featured: false,
-    hero: 'assets/img/portfolio/renovation-addition-belfast-hero.webp',
+    hero: 'assets/img/portfolio/renovation-addition-belfast-hero-bw.webp',
     delivery_url: null,
-    gallery: [],
+    gallery: [ 
+      { src: 'assets/img/portfolio/renovation-addition-belfast-00.webp', caption: '' },
+    ],
   },
 
   {
-    id: 4,
-    priority: 14,
+    id: 14,
+    priority: 11,
     name: 'Modern Barn',
     type: 'new-construction',
     status: 'completed',
@@ -266,8 +268,8 @@ export const projects = [
   },
 
   {
-    id: 8,
-    priority: 15,
+    id: 15,
+    priority: 12,
     name: 'Modern Barn',
     type: 'new-construction',
     status: 'completed',
@@ -283,8 +285,8 @@ export const projects = [
   },
 
   {
-    id: 2,
-    priority: 9,
+    id: 16,
+    priority: 10,
     name: 'Modern Cottage',
     type: 'new-construction',
     status: 'completed',
@@ -304,7 +306,7 @@ export const projects = [
   },
 
   {
-    id: 1,
+    id: 17,
     priority: 17,
     name: 'Renovation & Addition',
     type: 'renovation',
