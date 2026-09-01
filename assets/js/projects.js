@@ -197,7 +197,7 @@ export const projects = [
   },
   {
     id: 11,
-    priority: 8,
+    priority: 12,
     name: 'Modern Bungalow with ADU',
     type: 'new-construction',
     status: 'completed',
@@ -269,7 +269,7 @@ export const projects = [
 
   {
     id: 15,
-    priority: 12,
+    priority: 14,
     name: 'Modern Barn',
     type: 'new-construction',
     status: 'completed',
@@ -346,7 +346,7 @@ export const projects = [
 export const projectsSorted = [...projects].sort((a, b) => a.priority - b.priority);
 
 // Top count for default grid display - set to display all for now 08/27/2026
-export const projectsGrid = projectsSorted.filter(p => p.priority <= 22);
+export const projectsGrid = projectsSorted.filter(p => p.priority <= 12);
 
 // Featured projects for hero slideshow (up to 5)
 export const projectsFeatured = projectsSorted
