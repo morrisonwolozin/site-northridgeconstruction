@@ -226,10 +226,10 @@ export const projects = [
     hero: 'assets/img/portfolio/modern-colonial-lincolnville-hero-bw.webp',
     delivery_url: null,
     gallery: [
+      { src: 'assets/img/portfolio/modern-colonial-lincolnville-00.webp', caption: '' },
       { src: 'assets/img/portfolio/modern-colonial-lincolnville-01.webp', caption: '' },
       { src: 'assets/img/portfolio/modern-colonial-lincolnville-02.webp', caption: '' },
       { src: 'assets/img/portfolio/modern-colonial-lincolnville-03.webp', caption: '' },
-      { src: 'assets/img/portfolio/modern-colonial-lincolnville-04.webp', caption: '' },
     ],
   },
 
