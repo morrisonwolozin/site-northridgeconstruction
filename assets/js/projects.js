@@ -334,8 +334,7 @@ export const projects = [
     hero: 'assets/img/portfolio/modern-cottage-south-thomaston-hero.webp',
     delivery_url: null,
     gallery: [
-        { src: 'assets/img/portfolio/renovation-addition-south-thomaston-00.webp', caption: '' },
-
+        { src: 'assets/img/portfolio/modern-cottage-south-thomaston-00.webp', caption: 'foundation awaiting heating tubing placement' },
     ],
   },
 ];
