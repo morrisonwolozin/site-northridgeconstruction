@@ -1,20 +1,20 @@
 // assets/js/projects.js
 // 8/30/2026
 // Project data — controls grid display order, filter categories,
-// hero images, GLightbox galleries, and delivery page links.
+// hero images, GLightbo'x' galleries, and delivery page links.
 // 08/26/2026
 // me an' Claude.ai
 // MAINTENANCE:
 //   - Change 'priority' to reorder the grid (lower = earlier)
 //   - Add images to 'gallery' array as photos become available
 //   - Set 'featured: true' on up to 5 projects for hero slideshow
-//   - Set 'delivery_url' when a cost study page exists
+//   - Set 'delivery_url' when a cost study page e'x'ists
 //   - 'type' drives filter buttons: 'current' | 'new-construction' | 'renovation'
 //
-// Image paths are relative to index.html (project root).
+// Image paths are relative to inde'x'.html (project root).
 // All portfolio images live in assets/img/portfolio/
-// Grid display is limited to 12 cards by default, but can be expanded by changing the filter in the code below
-  // ── Secondary — available for grid expansion ───────────────────
+// Grid display is limited to 12 cards by default, but can be e'x'panded by changing the filter in the code below
+  // ── Secondary — available for grid e'x'pansion ───────────────────
   // Set priority > 12 to keep out of default 12-card grid.
   // Reduce priority to promote into the main grid.
 
@@ -22,14 +22,17 @@ export const projects = [
   {
     id: 1,
     priority: 2,
-    name: 'Modern Bungalow',
+    name: 'Modern Raised Bungalow',
     status: 'current',
     type: 'new-construction',
     year: 2026,
     location: 'Camden, ME',
+    conditioned_area: 'x',
+    bedrooms: 'x',
+    bathrooms: 'x',
     featured: true,
     hero: 'assets/img/portfolio/modern-bungalow-camden-hero.webp',
-    delivery_url: null,
+    delivery_url: './delivery/01-bungalow-camden-estimate.html',
     gallery: [
       {src: 'assets/img/portfolio/modern-bungalow-camden-00.webp', caption: 'southwest elevation'},
       {src: 'assets/img/portfolio/modern-bungalow-camden-01.webp', caption: 'northeast elevation'},
@@ -41,11 +44,14 @@ export const projects = [
   {
     id: 2,
     priority: 5,
-    name: 'Modern Bungalow',
+    name: 'Modern Raised Bungalow',
     status: 'current',
     type: 'new-construction',
     year: 2026,
     location: 'Phillips, ME',
+        conditioned_area: 'x',
+    bedrooms: 'x',
+    bathrooms: 'x',
     featured: true,
     hero: 'assets/img/portfolio/modern-bungalow-phillips-hero.webp',
     delivery_url: null,
@@ -61,6 +67,9 @@ export const projects = [
     type: 'new-construction',
     year: 2024,
     location: 'Belfast, ME',
+    conditioned_area: 'x',
+    bedrooms: 'x',
+    bathrooms: 'x',
     featured: true,
     hero: 'assets/img/portfolio/greek-revival-belfast-hero-bw.webp',
     delivery_url: null,
@@ -77,7 +86,7 @@ export const projects = [
   {
     id: 4,
     priority: 13,
-    name: 'Modern Colonial',
+    name: 'Modern Raised Bungalow',
         status: 'completed',
     type: 'new-construction',
     year: 2024,
@@ -93,11 +102,14 @@ export const projects = [
   {
     id: 5,
     priority: 7,
-    name: 'Modern A-Frame',
+    name: 'A-Frame',
     type: 'new-construction',
         status: 'completed',
     year: 2024,
     location: 'Lincolnville, ME',
+        conditioned_area: 'x',
+    bedrooms: 'x',
+    bathrooms: 'x',
     featured: false,
     hero: 'assets/img/portfolio/modern-aframe-lincolnville-hero.webp',
     delivery_url: null,
@@ -110,11 +122,14 @@ export const projects = [
   {
     id: 6,
     priority: 13,
-    name: 'Modern Bungalow',
+    name: 'Modern Colonial',
     type: 'new-construction',
         status: 'completed',
     year: 2025,
     location: 'Swanville, ME',
+    conditioned_area: 'x',
+    bedrooms: 'x',
+    bathrooms: 'x',
     featured: false,
     hero: 'assets/img/portfolio/modern-bungalow-swanville-hero.webp',
     delivery_url: null,
@@ -132,6 +147,9 @@ export const projects = [
     status: 'completed',
     year: 2025,
     location: 'Camden, ME',
+    conditioned_area: 'x',
+    bedrooms: 'x',
+    bathrooms: 'x',
     featured: false,
     hero: 'assets/img/portfolio/pool-enclosure-camden-hero.webp',
     delivery_url: null,
@@ -143,14 +161,17 @@ export const projects = [
   {
     id: 8,
     priority: 3,
-    name: 'Modern Bungalow',
+    name: 'Modern Ranch',
     type: 'new-construction',
     status: 'completed',
     year: 2023,
     location: 'Lincolnville, ME',
+    conditioned_area: 1900,
+    bedrooms: 3,
+    bathrooms: 2,
     featured: true,
     hero: 'assets/img/portfolio/modern-bungalow-lincolnville-hero.webp',
-    delivery_url: null,
+    delivery_url: './delivery/08-bungalow-lincolnville-estimate.html',
     gallery: [
       { src: 'assets/img/portfolio/modern-bungalow-lincolnville-00.webp', caption: 'south elevation' },
       { src: 'assets/img/portfolio/modern-bungalow-lincolnville-01.webp', caption: 'east elevation' },
@@ -163,11 +184,14 @@ export const projects = [
   {
     id: 9,
     priority: 6,
-    name: 'Modern Bungalow with ADU',
+    name: 'Bungalow with ADU',
     type: 'new-construction',
     status: 'completed',
     year: 2022,
     location: 'Lincolnville, ME',
+        conditioned_area: 'x',
+    bedrooms: 'x',
+    bathrooms: 'x',
     featured: false,
     hero: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-2-hero-bw.webp',
     delivery_url: null,
@@ -187,6 +211,9 @@ export const projects = [
     status: 'completed',
     year: 2022,
     location: 'Camden, ME',
+        conditioned_area: 'x',
+    bedrooms: 'x',
+    bathrooms: 'x',
     featured: false,
     hero: 'assets/img/portfolio/sauna-camden-hero.webp',
     delivery_url: null,
@@ -198,11 +225,14 @@ export const projects = [
   {
     id: 11,
     priority: 12,
-    name: 'Modern Bungalow with ADU',
+    name: 'Bungalow with ADU',
     type: 'new-construction',
     status: 'completed',
     year: 2020,
     location: 'Lincolnville, ME',
+    conditioned_area: 'x',
+    bedrooms: 'x',
+    bathrooms: 'x',
     featured: false,
     hero: 'assets/img/portfolio/modern-bungalow-adu-lincolnville-1-hero.webp',
     delivery_url: null,
@@ -217,11 +247,14 @@ export const projects = [
   {
     id: 12,
     priority: 11,
-    name: 'Modern Colonial',
+    name: 'Colonial',
     type: 'new-construction',
     status: 'completed',
     year: 2021,
     location: 'Lincolnville, ME',
+    conditioned_area: 'x',
+    bedrooms: 'x',
+    bathrooms: 'x',
     featured: false,
     hero: 'assets/img/portfolio/modern-colonial-lincolnville-hero-bw.webp',
     delivery_url: null,
@@ -241,6 +274,9 @@ export const projects = [
     status: 'completed',
     year: 2025,
     location: 'Belfast, ME',
+    conditioned_area: 'x',
+    bedrooms: 'x',
+    bathrooms: 'x',
     featured: false,
     hero: 'assets/img/portfolio/renovation-addition-belfast-hero-bw.webp',
     delivery_url: null,
@@ -257,6 +293,9 @@ export const projects = [
     status: 'completed',
     year: 2019,
     location: 'Palermo, ME',
+    conditioned_area: 'x',
+    bedrooms: 'x',
+    bathrooms: 'x',
     featured: false,
     hero: 'assets/img/portfolio/modern-barn-palermo-hero.webp',
     delivery_url: null,
@@ -270,11 +309,14 @@ export const projects = [
   {
     id: 15,
     priority: 14,
-    name: 'Modern Barn',
+    name: 'Barn',
     type: 'new-construction',
     status: 'completed',
     year: 2020,
     location: 'Somerville, ME',
+    conditioned_area: 'x',
+    bedrooms: 'x',
+    bathrooms: 'x',
     featured: false,
     hero: 'assets/img/portfolio/modern-barn-somerville-hero.webp',
     delivery_url: null,
@@ -287,11 +329,14 @@ export const projects = [
   {
     id: 16,
     priority: 10,
-    name: 'Modern Cottage',
+    name: 'Cottage',
     type: 'new-construction',
     status: 'completed',
     year: 2021,
     location: 'Northport, ME',
+    conditioned_area: 'x',
+    bedrooms: 'x',
+    bathrooms: 'x',
     featured: false,
     hero: 'assets/img/portfolio/modern-cottage-northport-hero.webp',
     delivery_url: null,
@@ -313,6 +358,9 @@ export const projects = [
     status: 'completed',
     year: 2018,
     location: 'Liberty, ME',
+    conditioned_area: 'x',
+    bedrooms: 'x',
+    bathrooms: 'x',
     featured: false,
     hero: 'assets/img/portfolio/renovation-addition-liberty-hero.webp',
     delivery_url: null,
@@ -325,14 +373,17 @@ export const projects = [
   {
     id: 18,
     priority: 1,
-    name: 'Modern Cottage',
+    name: 'Modern Raised Bungalow',
     type: 'new-construction',
     status: 'current',
     year: 2026,
     location: 'South Thomaston, ME',
+    conditioned_area: 'x',
+    bedrooms: 'x',
+    bathrooms: 'x',
     featured: false,
     hero: 'assets/img/portfolio/modern-cottage-south-thomaston-hero.webp',
-    delivery_url: null,
+    delivery_url: './delivery/18-cottage-south-thomaston-estimate.html',
     gallery: [
         { src: 'assets/img/portfolio/modern-cottage-south-thomaston-00.webp', caption: 'foundation awaiting heating tubing placement' },
     ],
