@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Northridge Construction LLC — building estimate for Meadow View Retreat, Camden, ME. Detailed trade-by-trade cost breakdown." />
+  <title>Modern Bungalow — Northridge Construction LLC</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family:'DM Sans',system-ui,sans-serif; background:#faf9f7; color:#1e2a26; -webkit-font-smoothing:antialiased; margin:0; }
+    .page-header { background:#3d6b5a; padding:1.25rem 2rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+    .page-header a { font-size:0.75rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:rgba(244,245,243,0.55); text-decoration:none; transition:color 0.2s; }
+    .page-header a:hover { color:#a8c8b8; }
+    .page-header-wordmark { font-size:0.95rem; font-weight:700; color:#f4f5f3; }
+    .estimate-wrap { max-width:780px; margin:3rem auto; padding:0 1.5rem 4rem; }
+    .disclaimer-banner { background:#f0f2ef; border-left:3px solid #3d6b5a; padding:0.875rem 1.25rem; margin-bottom:2.5rem; font-size:0.8rem; color:#3a4a44; line-height:1.65; }
+    .meta-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.5rem 2rem; margin-bottom:2.5rem; padding-bottom:1.5rem; border-bottom:1px solid #d1d8d4; }
+    .meta-row { display:flex; gap:0.5rem; font-size:0.875rem; }
+    .meta-label { font-weight:600; color:#1e2a26; white-space:nowrap; }
+    .meta-value { color:#3a4a44; }
+    .est-table { width:100%; border-collapse:collapse; font-size:0.875rem; }
+    .est-table tr.division-head td { font-weight:700; font-size:0.8rem; letter-spacing:0.04em; color:#1e2a26; background:#f0f2ef; padding:0.6rem 0.875rem; border-top:2px solid #d1d8d4; }
+    .est-table tr.line-item td { padding:0.45rem 0.875rem 0.45rem 1.75rem; color:#3a4a44; border-bottom:1px solid #eaece8; vertical-align:top; }
+    .est-table tr.line-item td.cost { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; color:#1e2a26; font-weight:500; }
+    .est-table tr.line-item td.note { font-size:0.75rem; color:#6b7f78; font-style:italic; white-space:nowrap; }
+    .est-table tr.subtotal td { padding:0.65rem 0.875rem; font-weight:600; font-size:0.875rem; color:#3a4a44; border-top:1px solid #d1d8d4; border-bottom:none; }
+    .est-table tr.subtotal td.cost { text-align:right; font-variant-numeric:tabular-nums; color:#1e2a26; }
+    .est-table tr.gc-fee td { padding:0.65rem 0.875rem; font-weight:600; color:#3a4a44; border-bottom:1px solid #d1d8d4; }
+    .est-table tr.gc-fee td.cost { text-align:right; font-variant-numeric:tabular-nums; color:#1e2a26; }
+    .est-table tr.project-total td { padding:0.875rem; font-size:1.05rem; font-weight:700; background:#1e2a26; color:#f4f5f3; }
+    .est-table tr.project-total td.cost { text-align:right; font-variant-numeric:tabular-nums; }
+    .exclusions { margin-top:2rem; padding-top:1.25rem; border-top:1px solid #d1d8d4; }
+    .exclusions h3 { font-size:0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#1e2a26; margin-bottom:0.625rem; }
+    .exclusions ul { list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap; gap:0.25rem 1.5rem; }
+    .exclusions li { font-size:0.825rem; color:#6b7f78; padding-left:1rem; position:relative; }
+    .exclusions li::before { content:'–'; position:absolute; left:0; color:#3d6b5a; }
+    .cta-block { margin-top:3rem; padding:2rem; background:#f0f2ef; border-left:3px solid #3d6b5a; display:flex; flex-direction:column; gap:0.875rem; }
+    .cta-block p { font-size:0.9rem; color:#3a4a44; line-height:1.7; margin:0; }
+    .cta-btn { display:inline-block; padding:0.7rem 1.75rem; background:#3d6b5a; color:#fff; font-size:0.75rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; align-self:flex-start; transition:background 0.2s; }
+    .cta-btn:hover { background:#2e5244; }
+    @media print { .page-header, .cta-block { display:none; } .estimate-wrap { margin:0; padding:0; } body { background:#fff; } }
+    @media (max-width:600px) { .meta-grid { grid-template-columns:1fr; } .est-table tr.line-item td.note { display:none; } }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <span class="page-header-wordmark">Northridge Construction LLC</span>
+  <a href="../index.html#delivery">← Back to Delivery</a>
+</div>
+
+<div class="estimate-wrap">
+
+  <div style="margin-bottom:1.75rem;">
+    <p style="font-size:1.5rem;font-weight:700;color:#1e2a26;margin-bottom:0.25rem;">Northridge Construction LLC</p>
+    <p style="font-size:0.85rem;color:#6b7f78;">1774 North Union Road · Union, ME 04862 · (207) 593-6089 · NorthridgeConstructionMe@gmail.com</p>
+  </div>
+
+  <div style="background:#3d6b5a;padding:0.875rem 1.25rem;margin-bottom:1.75rem;">
+    <p style="font-size:1.1rem;font-weight:700;color:#f4f5f3;margin:0;">Modern Bungalow — Building Estimate</p>
+  </div>
+
+  <div class="disclaimer-banner">
+    <strong>For Budgetary Purposes Only</strong> — This estimate is provided for planning purposes and does not constitute a contract or guarantee of final cost. Actual costs will vary based on final design, material selections, site conditions, and market pricing at time of construction.
+  </div>
+
+  <div class="meta-grid">
+    <div class="meta-row"><span class="meta-label">Project:</span><span class="meta-value">Modern Bungalow</span></div>
+    <div class="meta-row"><span class="meta-label">Quote Date:</span><span class="meta-value">September 1, 2025</span></div>
+    <div class="meta-row"><span class="meta-label">Location:</span><span class="meta-value">Camden, ME</span></div>
+    <!-- <div class="meta-row"><span class="meta-label">Expiration Date:</span><span class="meta-value">October 11, 2025</span></div> -->
+    <div class="meta-row"><span class="meta-label">Design Drawings Date:</span><span class="meta-value">June 30, 2025</span></div>
+    <div class="meta-row"><span class="meta-label">Construction Start:</span><span class="meta-value">September 1, 2025</span></div>
+    <div class="meta-row"><span class="meta-label">Est. Completion:</span><span class="meta-value">May 1, 2026</span></div>
+  </div>
+
+  <table class="est-table">
+
+    <tr class="division-head"><td colspan="3">01 &nbsp; General Conditions</td></tr>
+    <tr class="line-item"><td>Project management: client meetings, scheduling, quality control</td><td class="cost">$2,000</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Construction waste removal</td><td class="cost">$1,800</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Sanitary services</td><td class="cost">$1,200</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Construction cleaning</td><td class="cost">$1,000</td><td class="note"></td></tr>
+
+    <tr class="division-head"><td colspan="3">03 &nbsp; Concrete</td></tr>
+    <tr class="line-item"><td>10″ × 20″ footings, frost walls with 2 bands of rebar in footing and uprights 3′ on center with 3 bands in walls</td><td class="cost">$17,000</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Power-troweled garage slab with wire mesh and control joints</td><td class="cost">$5,400</td><td class="note"></td></tr>
+    <tr class="line-item"><td>15-mil vapor barrier beneath 4-inch garage slab (all seams taped)</td><td class="cost">$2,000</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Frost wall waterproofing</td><td class="cost">$1,000</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Nudura applied to 2-inch foam at exterior foundation walls above grade</td><td class="cost">$2,000</td><td class="note"></td></tr>
+
+    <tr class="division-head"><td colspan="3">04 &nbsp; Masonry / Metal</td></tr>
+    <tr class="line-item"><td>Cable railing at deck</td><td class="cost">$2,000</td><td class="note">allowance · TBD</td></tr>
+    <tr class="line-item"><td>Metal drip cap flashing at exterior siding &amp; 2-inch foam intersection</td><td class="cost">$300</td><td class="note"></td></tr>
+
+    <tr class="division-head"><td colspan="3">06 &nbsp; Wood, Plastic &amp; Composites</td></tr>
+    <tr class="line-item"><td>Carpentry framing labor</td><td class="cost">$45,000</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Framing and sheathing materials</td><td class="cost">$23,000</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Engineered lumber</td><td class="cost">$2,500</td><td class="note"></td></tr>
+    <tr class="line-item"><td>16″ deep Tri-Force floor system</td><td class="cost">$6,985</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Parallel cord roof truss system</td><td class="cost">$9,400</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Fasteners</td><td class="cost">$2,800</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Labor and materials for air sealing tapes, adhesives, vapor barriers</td><td class="cost">$4,500</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Hemlock timbers at exterior</td><td class="cost">$750</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Kitchen cabinets</td><td class="cost">$10,000</td><td class="note">allowance · TBD</td></tr>
+    <tr class="line-item"><td>Kitchen countertops</td><td class="cost">$4,000</td><td class="note">allowance · TBD</td></tr>
+    <tr class="line-item"><td>Built-in cubby at bathroom</td><td class="cost">$1,000</td><td class="note">allowance · TBD</td></tr>
+    <tr class="line-item"><td>Bathroom vanity</td><td class="cost">$850</td><td class="note">allowance · TBD</td></tr>
+    <tr class="line-item"><td>Interior wood trim (Robbins Lumber)</td><td class="cost">$2,900</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Install interior wood trim</td><td class="cost">$5,750</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Exterior trim including windows, doors, corner boards and fascia</td><td class="cost">$3,800</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Labor to install all exterior trim</td><td class="cost">$5,200</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Composite decking ($8.00/lft)</td><td class="cost">$1,040</td><td class="note">allowance · TBD</td></tr>
+    <tr class="line-item"><td>Finished stairs at mud/entry</td><td class="cost">$2,000</td><td class="note"></td></tr>
+
+    <tr class="division-head"><td colspan="3">07 &nbsp; Thermal &amp; Moisture</td></tr>
+    <tr class="line-item"><td>2-inch 2.4# EPS rigid foam at frost wall perimeter</td><td class="cost">$1,250</td><td class="note"></td></tr>
+    <tr class="line-item"><td>3-inch 2.4# EPS rigid foam beneath slab and at interior of frost walls</td><td class="cost">$6,200</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Install rigid foam</td><td class="cost">$780</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Standing seam metal roofing</td><td class="cost">$26,500</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Labor to install EWP board siding (factory painted)</td><td class="cost">$32,000</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Furnish pre-finished EWP board siding</td><td class="cost">$30,000</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Dense-pack cellulose insulation per drawings</td><td class="cost">$19,400</td><td class="note"></td></tr>
+
+    <tr class="division-head"><td colspan="3">08 &nbsp; Openings</td></tr>
+    <tr class="line-item"><td>Sierra Pacific tri-pane window &amp; door package</td><td class="cost">$23,200</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Install windows and flash with vapor membrane</td><td class="cost">$3,250</td><td class="note"></td></tr>
+    <tr class="line-item"><td>First floor entry door (Therma Tru)</td><td class="cost">$1,500</td><td class="note">allowance</td></tr>
+    <tr class="line-item"><td>Solid stave core interior doors and locksets</td><td class="cost">$3,000</td><td class="note">allowance · TBD</td></tr>
+    <tr class="line-item"><td>Labor to install interior doors</td><td class="cost">$1,500</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Overhead garage doors including installation</td><td class="cost">$7,000</td><td class="note">allowance · TBD</td></tr>
+
+    <tr class="division-head"><td colspan="3">09 &nbsp; Finishes</td></tr>
+    <tr class="line-item"><td>Drywall (including 5/8″ in garage per building code)</td><td class="cost">$19,000</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Interior painting</td><td class="cost">$16,000</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Exterior paint at roof and window trim</td><td class="cost">$3,500</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Pre-finished hardwood flooring material ($6.00/sf)</td><td class="cost">$6,240</td><td class="note">allowance · TBD</td></tr>
+    <tr class="line-item"><td>Hardwood flooring installation</td><td class="cost">$5,200</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Tile at shower pan insert</td><td class="cost">$5,000</td><td class="note">allowance</td></tr>
+
+    <tr class="division-head"><td colspan="3">22 &nbsp; Plumbing</td></tr>
+    <tr class="line-item"><td>Plumbing rough-in</td><td class="cost">$8,800</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Plumbing fixtures</td><td class="cost">$2,000</td><td class="note">allowance</td></tr>
+    <tr class="line-item"><td>Heat pump hot water heater (50 gal.)</td><td class="cost">$850</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Well pressure tank</td><td class="cost">$500</td><td class="note"></td></tr>
+
+    <tr class="division-head"><td colspan="3">23 &nbsp; HVAC</td></tr>
+    <tr class="line-item"><td>Single Zone Heat Pump System</td><td class="cost">$12,500</td><td class="note">allowance · TBD</td></tr>
+    <tr class="line-item"><td>Energy Recovery Ventilation (ERV) system</td><td class="cost">$6,000</td><td class="note">allowance · TBD</td></tr>
+    <tr class="line-item"><td>Resistance heat in mudroom, utility room and bathroom</td><td class="cost">$1,200</td><td class="note"></td></tr>
+
+    <tr class="division-head"><td colspan="3">26 &nbsp; Electrical</td></tr>
+    <tr class="line-item"><td>Electrical rough-in</td><td class="cost">$17,500</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Lighting fixtures</td><td class="cost">$3,000</td><td class="note">allowance · TBD</td></tr>
+    <tr class="line-item"><td>Heat pump disconnect</td><td class="cost">$450</td><td class="note"></td></tr>
+    <tr class="line-item"><td>6.1 kW PV system — 14 modules × 440W @ $3.50/watt</td><td class="cost">$21,560</td><td class="note">allowance</td></tr>
+    <tr class="line-item"><td>PV backup battery system</td><td class="cost">$15,000</td><td class="note">allowance</td></tr>
+    <tr class="line-item"><td>50 A EV receptacle and charger</td><td class="cost">$950</td><td class="note">allowance</td></tr>
+
+    <tr class="division-head"><td colspan="3">31 &nbsp; Earthwork</td></tr>
+    <tr class="line-item"><td>Excavate for foundation including radon piping, crushed stone, drip edge</td><td class="cost">$31,200</td><td class="note"></td></tr>
+
+    <tr class="division-head"><td colspan="3">33 &nbsp; Utilities</td></tr>
+    <tr class="line-item"><td>Labor and material to pull 2 runs #2 primary cable, 460′ max run × 2 from CMP pole to transformer pad. Install 400A single meter with 2×200A disconnects on pedestal. Run one 200A to garage/apartment 150′ total run. Stub out conduit for future house 200A service.</td><td class="cost">$18,500</td><td class="note"></td></tr>
+
+    <tr class="subtotal"><td>Sub-Total</td><td class="cost">$517,705</td><td></td></tr>
+    <tr class="gc-fee"><td>Contractor Fee &nbsp;<span style="font-weight:400;font-size:0.8rem;color:#6b7f78;">12%</span></td><td class="cost">$62,125</td><td></td></tr>
+    <tr class="project-total"><td>Project Total</td><td class="cost">$579,830</td><td></td></tr>
+
+  </table>
+
+  <div class="exclusions">
+    <h3>Specific Exclusions</h3>
+    <ul>
+      <li>Landscaping</li>
+      <li>Water treatment system</li>
+      <li>Snow plowing</li>
+      <li>Existing driveway improvements</li>
+      <li>CMP costs (if any)</li>
+      <li>Well</li>
+      <li>Septic system</li>
+      <li>Drainage, hay and seed disturbed areas, parking area &amp; vehicle turnaround</li>
+    </ul>
+  </div>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.25rem;background:#f0f2ef;font-size:0.8rem;color:#3a4a44;line-height:1.7;">
+    <strong>Note:</strong> This estimate includes a 6.1 kW solar PV system and EV charger — reflecting Northridge's capability to coordinate renewable energy systems as part of the build.
+    ERV ventilation system included. Well and septic are owner-arranged exclusions.
+  </div>
+
+  <div class="cta-block">
+    <p>This estimate was prepared for a project in Camden, ME in 2025. Every Northridge project begins with a detailed estimate like this one — broken down by trade so you know exactly where your budget is going before construction starts.</p>
+    <p>Ready to talk about your project?</p>
+    <a href="../index.html#contact" class="cta-btn">Contact Northridge →</a>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Northridge Construction LLC — building estimate for Farris A-Frame, Union, ME. Detailed trade-by-trade cost breakdown." />
+  <title>Farris A-Frame Estimate — Northridge Construction LLC</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family:'DM Sans',system-ui,sans-serif; background:#faf9f7; color:#1e2a26; -webkit-font-smoothing:antialiased; margin:0; }
+    .page-header { background:#1e2a26; padding:1.25rem 2rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+    .page-header a { font-size:0.75rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:rgba(244,245,243,0.55); text-decoration:none; transition:color 0.2s; }
+    .page-header a:hover { color:#a8c8b8; }
+    .page-header-wordmark { font-size:0.95rem; font-weight:700; color:#f4f5f3; }
+    .estimate-wrap { max-width:780px; margin:3rem auto; padding:0 1.5rem 4rem; }
+    .disclaimer-banner { background:#f0f2ef; border-left:3px solid #3d6b5a; padding:0.875rem 1.25rem; margin-bottom:2.5rem; font-size:0.8rem; color:#3a4a44; line-height:1.65; }
+    .meta-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.5rem 2rem; margin-bottom:2.5rem; padding-bottom:1.5rem; border-bottom:1px solid #d1d8d4; }
+    .meta-row { display:flex; gap:0.5rem; font-size:0.875rem; }
+    .meta-label { font-weight:600; color:#1e2a26; white-space:nowrap; }
+    .meta-value { color:#3a4a44; }
+    .est-table { width:100%; border-collapse:collapse; font-size:0.875rem; }
+    .est-table tr.division-head td { font-weight:700; font-size:0.8rem; letter-spacing:0.04em; color:#1e2a26; background:#f0f2ef; padding:0.6rem 0.875rem; border-top:2px solid #d1d8d4; }
+    .est-table tr.line-item td { padding:0.45rem 0.875rem 0.45rem 1.75rem; color:#3a4a44; border-bottom:1px solid #eaece8; vertical-align:top; }
+    .est-table tr.line-item td.cost { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; color:#1e2a26; font-weight:500; }
+    .est-table tr.line-item td.note { font-size:0.75rem; color:#6b7f78; font-style:italic; white-space:nowrap; }
+    .est-table tr.line-item td.by-owner { font-size:0.75rem; color:#3d6b5a; font-weight:600; white-space:nowrap; }
+    .est-table tr.subtotal td { padding:0.65rem 0.875rem; font-weight:600; font-size:0.875rem; color:#3a4a44; border-top:1px solid #d1d8d4; border-bottom:none; }
+    .est-table tr.subtotal td.cost { text-align:right; font-variant-numeric:tabular-nums; color:#1e2a26; }
+    .est-table tr.gc-fee td { padding:0.65rem 0.875rem; font-weight:600; color:#3a4a44; border-bottom:1px solid #d1d8d4; }
+    .est-table tr.gc-fee td.cost { text-align:right; font-variant-numeric:tabular-nums; color:#1e2a26; }
+    .est-table tr.project-total td { padding:0.875rem; font-size:1.05rem; font-weight:700; background:#1e2a26; color:#f4f5f3; }
+    .est-table tr.project-total td.cost { text-align:right; font-variant-numeric:tabular-nums; }
+    .exclusions { margin-top:2rem; padding-top:1.25rem; border-top:1px solid #d1d8d4; }
+    .exclusions h3 { font-size:0.75rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:#1e2a26; margin-bottom:0.625rem; }
+    .exclusions ul { list-style:none; padding:0; margin:0; display:flex; flex-wrap:wrap; gap:0.25rem 1.5rem; }
+    .exclusions li { font-size:0.825rem; color:#6b7f78; padding-left:1rem; position:relative; }
+    .exclusions li::before { content:'–'; position:absolute; left:0; color:#3d6b5a; }
+    .cta-block { margin-top:3rem; padding:2rem; background:#f0f2ef; border-left:3px solid #3d6b5a; display:flex; flex-direction:column; gap:0.875rem; }
+    .cta-block p { font-size:0.9rem; color:#3a4a44; line-height:1.7; margin:0; }
+    .cta-btn { display:inline-block; padding:0.7rem 1.75rem; background:#3d6b5a; color:#fff; font-size:0.75rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; align-self:flex-start; transition:background 0.2s; }
+    .cta-btn:hover { background:#2e5244; }
+    @media print { .page-header, .cta-block { display:none; } .estimate-wrap { margin:0; padding:0; } body { background:#fff; } }
+    @media (max-width:600px) { .meta-grid { grid-template-columns:1fr; } .est-table tr.line-item td.note, .est-table tr.line-item td.by-owner { display:none; } }
+  </style>
+</head>
+<body>
+
+<div class="page-header">
+  <span class="page-header-wordmark">Northridge Construction LLC</span>
+  <a href="../index.html#delivery">← Back to Delivery</a>
+</div>
+
+<div class="estimate-wrap">
+
+  <div style="margin-bottom:1.75rem;">
+    <p style="font-size:1.5rem;font-weight:700;color:#1e2a26;margin-bottom:0.25rem;">Northridge Construction LLC</p>
+    <p style="font-size:0.85rem;color:#6b7f78;">1774 North Union Road · Union, ME 04862 · (207) 593-6089</p>
+  </div>
+
+  <div style="background:#1e2a26;padding:0.875rem 1.25rem;margin-bottom:1.75rem;">
+    <p style="font-size:1.1rem;font-weight:700;color:#f4f5f3;margin:0;">Farris A-Frame — Building Estimate (Revision 3)</p>
+  </div>
+
+  <div class="disclaimer-banner">
+    <strong>For Budgetary Purposes Only</strong> — This estimate is provided for planning purposes and does not constitute a contract or guarantee of final cost. Actual costs will vary based on final design, material selections, site conditions, and market pricing at time of construction.
+  </div>
+
+  <div class="meta-grid">
+    <div class="meta-row"><span class="meta-label">Project:</span><span class="meta-value">Farris A-Frame 24 × 45</span></div>
+    <div class="meta-row"><span class="meta-label">Quote Date:</span><span class="meta-value">June 10, 2024</span></div>
+    <div class="meta-row"><span class="meta-label">Location:</span><span class="meta-value">Union, ME</span></div>
+    <div class="meta-row"><span class="meta-label">Expiration Date:</span><span class="meta-value">June 20, 2024</span></div>
+    <div class="meta-row"><span class="meta-label">Construction Start:</span><span class="meta-value">July 1, 2024</span></div>
+    <div class="meta-row"><span class="meta-label">Est. Completion:</span><span class="meta-value">January 21, 2025</span></div>
+  </div>
+
+  <table class="est-table">
+
+    <tr class="division-head"><td colspan="3">01 &nbsp; General Conditions</td></tr>
+    <tr class="line-item"><td>Project management: invoicing, material ordering, scheduling</td><td class="cost">$2,000</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Construction waste removal</td><td class="cost">$2,000</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Sanitary service</td><td class="cost">$840</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Crane service to install roof system</td><td class="cost">$1,000</td><td class="note"></td></tr>
+
+    <tr class="division-head"><td colspan="3">03 &nbsp; Concrete</td></tr>
+    <tr class="line-item"><td>Foundation footing, 4-foot frost walls, 4-inch slab and steel reinforcement</td><td class="cost">$27,000</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Rigid foam below foundation slab and on interior of frost walls</td><td class="cost">$4,425</td><td class="note"></td></tr>
+    <tr class="line-item"><td>10-mil vapor barrier beneath foundation slab</td><td class="cost">$750</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Dampproofing at exterior of frost walls and on top of foundation footings</td><td class="cost">$1,200</td><td class="note"></td></tr>
+    <tr class="line-item"><td>3 concrete piers below entry deck</td><td class="cost">$1,800</td><td class="note"></td></tr>
+
+    <tr class="division-head"><td colspan="3">06 &nbsp; Wood, Plastic &amp; Composites</td></tr>
+    <tr class="line-item"><td>Structurally engineered posts &amp; beams</td><td class="cost">$15,000</td><td class="note">allowance</td></tr>
+    <tr class="line-item"><td>Framing material</td><td class="cost">$36,496</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Carpentry labor</td><td class="cost">$60,000</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Exterior decking</td><td class="cost">$4,000</td><td class="note">allowance</td></tr>
+    <tr class="line-item"><td>Kitchen cabinets</td><td class="cost">$5,000</td><td class="note">allowance</td></tr>
+    <tr class="line-item"><td>Kitchen countertop</td><td class="cost">$3,000</td><td class="note">allowance</td></tr>
+    <tr class="line-item"><td>Cable railing</td><td class="cost">$6,000</td><td class="note">allowance</td></tr>
+    <tr class="line-item"><td>Bath vanities</td><td class="cost">$1,000</td><td class="note">allowance</td></tr>
+    <tr class="line-item"><td>Fasteners and adhesives</td><td class="cost">$2,000</td><td class="note"></td></tr>
+
+    <tr class="division-head"><td colspan="3">07 &nbsp; Thermal &amp; Moisture</td></tr>
+    <tr class="line-item"><td>Asphalt roofing</td><td class="cost">$18,000</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Insulation</td><td class="cost">$24,000</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Vertical pine shiplap siding</td><td class="cost">$4,200</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Labor to install siding</td><td class="cost">$3,000</td><td class="note"></td></tr>
+
+    <tr class="division-head"><td colspan="3">08 &nbsp; Openings</td></tr>
+    <tr class="line-item"><td>Anderson window package</td><td class="cost">$47,500</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Install windows and exterior doors</td><td class="cost">$4,000</td><td class="note"></td></tr>
+    <tr class="line-item"><td>2 Jeld-Wen exterior doors</td><td class="cost">$4,400</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Flat panel solid core interior doors per door schedule</td><td class="cost">$3,800</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Labor to install interior doors and hardware</td><td class="cost">$3,500</td><td class="note"></td></tr>
+
+    <tr class="division-head"><td colspan="3">09 &nbsp; Finishes</td></tr>
+    <tr class="line-item"><td>Drywall</td><td class="cost">$22,000</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Interior painting</td><td class="cost">$2,500</td><td class="by-owner">by owners</td></tr>
+    <tr class="line-item"><td>Pre-finished hardwood flooring</td><td class="cost">$15,000</td><td class="note">allowance</td></tr>
+
+    <tr class="division-head"><td colspan="3">10 &nbsp; Special</td></tr>
+    <tr class="line-item"><td>Wood stove</td><td class="cost">$5,000</td><td class="by-owner">by owner</td></tr>
+    <tr class="line-item"><td>Metalbestos chimney</td><td class="cost">$3,000</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Appliances</td><td class="cost">$2,540</td><td class="note">allowance</td></tr>
+
+    <tr class="division-head"><td colspan="3">22 &nbsp; Plumbing</td></tr>
+    <tr class="line-item"><td>Plumbing rough-in</td><td class="cost">$12,000</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Plumbing fixtures and tile</td><td class="cost">$5,000</td><td class="by-owner">by owner</td></tr>
+    <tr class="line-item"><td>Hot water heater</td><td class="cost">$600</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Well water pressure tank</td><td class="cost">$500</td><td class="note"></td></tr>
+
+    <tr class="division-head"><td colspan="3">23 &nbsp; HVAC</td></tr>
+    <tr class="line-item"><td>Heat pump system</td><td class="cost">$7,500</td><td class="note">allowance</td></tr>
+
+    <tr class="division-head"><td colspan="3">26 &nbsp; Electrical</td></tr>
+    <tr class="line-item"><td>Electrical rough-in including baseboard heat in bathrooms</td><td class="cost">$19,000</td><td class="note"></td></tr>
+    <tr class="line-item"><td>200 Amp service with 40-circuit panel</td><td class="cost">$2,500</td><td class="note"></td></tr>
+    <tr class="line-item"><td>Lighting fixtures</td><td class="cost">$2,500</td><td class="by-owner">by owner</td></tr>
+    <tr class="line-item"><td>Heat pump disconnect</td><td class="cost">$450</td><td class="note"></td></tr>
+
+    <tr class="division-head"><td colspan="3">31 &nbsp; Earthwork</td></tr>
+    <tr class="line-item"><td>Foundation excavation, gravel driveway with turnaround, backfill</td><td class="cost">$40,000</td><td class="by-owner">by owner</td></tr>
+
+    <tr class="division-head"><td colspan="3">33 &nbsp; Utilities</td></tr>
+    <tr class="line-item"><td>Septic system</td><td class="cost">$17,000</td><td class="by-owner">by owner</td></tr>
+    <tr class="line-item"><td>Drilled well (waterline trenching not included)</td><td class="cost">$8,500</td><td class="note">allowance</td></tr>
+    <tr class="line-item"><td>Well pump</td><td class="cost">$2,500</td><td class="note"></td></tr>
+
+    <tr class="subtotal"><td>Sub-Total</td><td class="cost">$459,001</td><td></td></tr>
+    <tr class="gc-fee"><td>Contractor Fee &nbsp;<span style="font-weight:400;font-size:0.8rem;color:#6b7f78;">15%</span></td><td class="cost">$68,850</td><td></td></tr>
+    <tr class="project-total"><td>Project Total</td><td class="cost">$527,851</td><td></td></tr>
+
+  </table>
+
+  <div style="margin-top:1.5rem;padding:1rem 1.25rem;background:#f0f2ef;font-size:0.8rem;color:#3a4a44;line-height:1.7;">
+    <strong>Note:</strong> Earthwork, septic, and selected finish items carried as owner-supplied in this estimate.
+    Interior painting, plumbing fixtures/tile, and lighting fixtures by owner.
+  </div>
+
+  <div class="cta-block">
+    <p>This estimate was prepared for an A-Frame home in Union, ME in 2024. Every Northridge project begins with a detailed estimate like this one — broken down by trade so you know exactly where your budget is going before construction starts.</p>
+    <p>Ready to talk about your project?</p>
+    <a href="../index.html#contact" class="cta-btn">Contact Northridge →</a>
+  </div>
+
+</div>
+</body>
+</html>

@@ -37,16 +37,37 @@
     }
     .project-card:hover img { transform: scale(1.04); }
 
-    /* Overlay */
     .card-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(30,42,38,0.82) 0%, transparent 55%);
+      background: linear-gradient(to top, rgba(30,42,38,0.90) 0%, rgba(30,42,38,0.15) 60%, transparent 100%);
       opacity: 0;
       transition: opacity 0.3s ease;
       display: flex; align-items: flex-end;
-      padding: 1.25rem;
+      padding: 1.5rem;
     }
     .project-card:hover .card-overlay { opacity: 1; }
+    .card-overlay .card-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: #ffffff;
+      margin-bottom: 0.35rem;
+    }
+    .card-overlay .card-title {
+      font-family: 'DM Sans';
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #ffffff;
+      line-height: 1.2;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    }
+    .card-overlay .card-sub {
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: rgba(244,245,243,0.7);
+      margin-top: 0.3rem;
+    }
 
     /* Camera icon — signals clickable gallery */
     .gallery-badge {
@@ -81,14 +102,27 @@
       overflow: hidden; pointer-events: none;
     }
 
+    .glightbox-clean .gdesc-inner { padding: 1rem 1.5rem; }
+    .glightbox-clean .gslide-title {
+      
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1e2a26;
+      margin-bottom: 0.25rem;
+    }
+    .glightbox-clean .gslide-desc {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #1e2a26;
+    }
+
     /* Section eyebrow */
     .eyebrow {
-      font-size: 0.7rem; font-weight: 600;
+      font-size: 0.7rem; font-weight: bold;
       letter-spacing: 0.14em; text-transform: uppercase; color: #3d6b5a;
       margin-bottom: 0.75rem;
     }
     .section-title {
-      font-family: 'Lora', serif;
       font-size: clamp(1.75rem, 3vw, 2.5rem);
       font-weight: 700; color: #1e2a26; line-height: 1.2;
     }
@@ -162,6 +196,15 @@ projectsGrid.forEach(project => {
     'renovation':       'Renovation',
   }[project.type] || project.type;
 
+  const details = [
+      project.conditioned_area ? `${project.conditioned_area.toLocaleString()} SF` : null,
+      project.bedrooms ? `${project.bedrooms} bed`            : null,
+      project.bathrooms? `${project.bathrooms} bath`          : null,
+    ].filter(Boolean).join(' · ');
+    
+  const eyebrow1 = [project.year,project.location ].filter(Boolean).join(' · ')
+  const eyebrow2 = [ details].filter(Boolean).join(' · ')
+
   card.innerHTML = `
     <img
       src="${project.hero}"
@@ -172,22 +215,29 @@ projectsGrid.forEach(project => {
     <div class="img-missing" style="display:none;">
       ${project.name}<br/><span style="font-size:0.65rem;">${project.hero.split('/').pop()}</span>
     </div>
+
     <div class="card-overlay">
       <div>
-        <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;
-          color:rgba(244,245,243,0.6);margin-bottom:0.25rem;">
-          ${typeLabel} · ${project.location} · ${project.year}
-        </p>
-        <p style="font-family:'Lora',serif;font-size:1rem;font-weight:600;color:#f4f5f3;">
-          ${project.name}
-        </p>
+        <p class="card-eyebrow">${typeLabel} · ${eyebrow1}</p>
+        <p class="card-eyebrow"> ${eyebrow2}</p>
+        <p class="card-title">${project.name}</p>
+        ${project.delivery_url
+          ? `<p class="card-eyebrow" style="margin-top:0.4rem;">
+          <a href="${project.delivery_url}"
+              style="color:#ffffff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.95);"
+              onclick="event.stopPropagation();">
+            View Cost Estimate →
+            </a>
+          </p>`
+          : ''}
         ${hasGallery
-          ? `<p style="font-size:0.7rem;color:rgba(244,245,243,0.55);margin-top:0.3rem;">
-               Click to view ${project.gallery.length + 1} photos
-             </p>`
+          ? `<p class="card-sub">View ${project.gallery.length + 1} photos</p>`
           : ''}
       </div>
     </div>
+
+
+
     ${hasGallery
       ? `<div class="gallery-badge">
            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
