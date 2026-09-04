@@ -1,0 +1,258 @@
+{
+  "meta": {
+    "version": "1.0",
+    "contractor": "Northridge Construction LLC",
+    "region": "Midcoast Maine",
+    "currency": "USD",
+    "gc_fee_percent": 12,
+    "last_updated": "2025-08-20",
+    "reference_projects": [
+      {
+        "name": "Lipscomb",
+        "year": 2023,
+        "location": "Camden, ME",
+        "occupied_sf": 1900,
+        "program": "Ranch — first floor, full conditioned basement, room above attached garage",
+        "estimate_status": "initial estimate — not final actuals. HVAC updated to $45k from original $28k allowance. Refit model against actuals when available."
+      }
+    ],
+    "model_notes": "Two-point linear model: fixed intercept + variable $/sf. Anchored at 1900sf (Lipscomb reference) and 800sf (synthetic). Variables derived as: rate = (cost@1900 - cost@800) / 1100. Update synthetic 800sf column and refit when second real project data is available."
+  },
+
+  "floor_types": [
+    {
+      "id": "basement",
+      "label": "Full Basement",
+      "conditioned": true,
+      "finished": false,
+      "notes": "Conditioned but unfinished — finishes trade does not apply"
+    },
+    {
+      "id": "first_floor",
+      "label": "First Floor",
+      "conditioned": true,
+      "finished": true
+    },
+    {
+      "id": "second_floor",
+      "label": "Second Floor",
+      "conditioned": true,
+      "finished": true
+    },
+    {
+      "id": "above_garage",
+      "label": "Room Above Garage",
+      "conditioned": true,
+      "finished": true,
+      "notes": "Accessed via interior stair within conditioned envelope. Separate HVAC unit."
+    },
+    {
+      "id": "garage",
+      "label": "Attached Garage",
+      "conditioned": false,
+      "finished": false
+    }
+  ],
+
+  "trades": [
+    {
+      "id": "general-conditions",
+      "csi": "01",
+      "internal_name": "General Conditions",
+      "display_name": "General Conditions",
+      "notes": "Project management, material orders, subcontractor scheduling, crane and forklift rental, sanitary services, construction waste removal",
+      "scope": "whole_project",
+      "fixed": 10400,
+      "rate": 0.00,
+      "rate_basis": null,
+      "applies_to": ["all"]
+    },
+    {
+      "id": "foundation-concrete",
+      "csi": "03",
+      "internal_name": "Foundation walls and basement slab",
+      "display_name": "Foundation & Concrete",
+      "notes": "Foundation walls, basement slab, 2-inch rigid foam below slab, 10-mil vapor barrier, waterproofing at foundation walls",
+      "scope": "basement",
+      "fixed": 9327,
+      "rate": 21.09,
+      "rate_basis": "foundation_sf",
+      "applies_to": ["basement"]
+    },
+    {
+      "id": "framing-structure",
+      "csi": "06",
+      "internal_name": "Lumber package, carpentry labor, structural components",
+      "display_name": "Framing & Structure",
+      "notes": "Lumber package, fasteners and adhesives and tapes, carpentry labor, full-span floor joists, roof trusses",
+      "scope": "per_floor",
+      "fixed": 43200,
+      "rate": 97.00,
+      "rate_basis": "conditioned_sf",
+      "applies_to": ["first_floor", "second_floor", "above_garage"]
+    },
+    {
+      "id": "envelope",
+      "csi": "07",
+      "internal_name": "Dense pack cellulose, siding material and labor, standing seam metal roof",
+      "display_name": "Envelope — Insulation, Siding & Roof",
+      "notes": "Dense-pack cellulose insulation, LP Smartside board and batten (factory painted), siding labor, standing seam metal roof",
+      "scope": "per_floor",
+      "fixed": 18428,
+      "rate": 41.10,
+      "rate_basis": "conditioned_sf",
+      "applies_to": ["first_floor", "second_floor", "above_garage"]
+    },
+    {
+      "id": "openings",
+      "csi": "08",
+      "internal_name": "Mathews Brothers windows and exterior doors, interior doors, door hardware",
+      "display_name": "Windows & Doors",
+      "notes": "Mathews Brothers windows and exterior doors, interior door allowance, door hardware",
+      "scope": "per_floor",
+      "fixed": 7973,
+      "rate": 17.92,
+      "rate_basis": "conditioned_sf",
+      "applies_to": ["first_floor", "second_floor", "above_garage"]
+    },
+    {
+      "id": "finishes",
+      "csi": "09",
+      "internal_name": "Drywall, interior paint, exterior paint, flooring and installation",
+      "display_name": "Finishes",
+      "notes": "Drywall, interior paint, exterior paint, flooring allowance. Applies to finished conditioned space only — not unfinished basement.",
+      "scope": "per_floor",
+      "fixed": 13073,
+      "rate": 28.91,
+      "rate_basis": "finished_sf",
+      "applies_to": ["first_floor", "second_floor", "above_garage"]
+    },
+    {
+      "id": "plumbing",
+      "csi": "22",
+      "internal_name": "Plumbing rough-in and fixtures",
+      "display_name": "Plumbing",
+      "notes": "Rough-in and fixture allowance. Conditioned area used as proxy for bathroom count pending per-bathroom model. Applies to all conditioned floors including basement.",
+      "scope": "per_floor",
+      "fixed": 4809,
+      "rate": 10.37,
+      "rate_basis": "conditioned_sf",
+      "applies_to": ["first_floor", "second_floor", "above_garage", "basement"]
+    },
+    {
+      "id": "hvac-main",
+      "csi": "23",
+      "internal_name": "Heat pump ducted — hybrid gas/heat pump two zone system",
+      "display_name": "HVAC — Main System",
+      "notes": "Lipscomb: hybrid gas/heat pump ducted, two zones covering first floor and conditioned basement. Updated from initial $28k estimate to $40k actual.",
+      "scope": "whole_project",
+      "fixed": 40000,
+      "rate": 0.00,
+      "rate_basis": null,
+      "applies_to": ["first_floor", "basement"]
+    },
+    {
+      "id": "hvac-above-garage",
+      "csi": "23",
+      "internal_name": "Heat pump — room above garage",
+      "display_name": "HVAC — Room Above Garage",
+      "notes": "Separate mini-split or small ducted unit serving above-garage occupied space only.",
+      "scope": "above_garage",
+      "fixed": 5000,
+      "rate": 0.00,
+      "rate_basis": null,
+      "applies_to": ["above_garage"]
+    },
+    {
+      "id": "hvac-erv",
+      "csi": "23",
+      "internal_name": "ERV / Mechanical ventilation",
+      "display_name": "Mechanical Ventilation (ERV)",
+      "notes": "Allowance — Fantech or equivalent.",
+      "scope": "whole_project",
+      "fixed": 7000,
+      "rate": 0.00,
+      "rate_basis": null,
+      "applies_to": ["all"]
+    },
+    {
+      "id": "electrical",
+      "csi": "26",
+      "internal_name": "Electrical rough-in and lighting fixtures",
+      "display_name": "Electrical",
+      "notes": "Kenney & Gray Electric. Lighting fixture allowance included. Applies to all conditioned floors including basement.",
+      "scope": "per_floor",
+      "fixed": 5063,
+      "rate": 11.55,
+      "rate_basis": "conditioned_sf",
+      "applies_to": ["first_floor", "second_floor", "above_garage", "basement"]
+    }
+  ],
+
+  "per_occurrence": [
+    {
+      "id": "kitchen-cabinets-countertop",
+      "csi": "06",
+      "internal_name": "Kitchen cabinets and countertop (stone or composite)",
+      "display_name": "Kitchen cabinets & countertop (allowance)",
+      "notes": "Combined allowance for cabinets and stone or composite countertop",
+      "triggers": ["kitchen"],
+      "fixed": 22000
+    },
+    {
+      "id": "bath-vanity-full",
+      "csi": "06",
+      "internal_name": "Bath vanities — full bath",
+      "display_name": "Bath vanity — full bath (allowance)",
+      "triggers": ["bath-full"],
+      "fixed": 1500
+    },
+    {
+      "id": "bath-vanity-half",
+      "csi": "06",
+      "internal_name": "Bath vanities — half bath",
+      "display_name": "Bath vanity — half bath (allowance)",
+      "triggers": ["bath-half"],
+      "fixed": 750
+    }
+  ],
+
+  "site": [
+    {
+      "id": "earthwork",
+      "csi": "31",
+      "internal_name": "Excavation for house, drainage, backfill, final grade, gravel driveway",
+      "display_name": "Excavation, grading & driveway",
+      "notes": "Includes foundation excavation, drainage, backfill, finish grading, gravel driveway",
+      "fixed": 40000,
+      "default_checked": true
+    },
+    {
+      "id": "well",
+      "csi": "33",
+      "internal_name": "Drilled well",
+      "display_name": "Drilled well (allowance)",
+      "notes": "Uncheck if municipal water or existing well",
+      "fixed": 6000,
+      "default_checked": true
+    },
+    {
+      "id": "power",
+      "csi": "33",
+      "internal_name": "Underground power service",
+      "display_name": "Underground electric service",
+      "notes": "Uncheck if overhead service or already in place",
+      "fixed": 4500,
+      "default_checked": true
+    },
+    {
+      "id": "septic",
+      "csi": "33",
+      "internal_name": "Septic system",
+      "display_name": "Septic system",
+      "notes": "Uncheck if municipal sewer or existing system",
+      "fixed": 16000,
+      "default_checked": true
+    }
+  ]
+}

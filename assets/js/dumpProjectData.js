@@ -11,7 +11,7 @@ function dumpProjectData() {
     
     for (let i=0; i < theProjects.length ; i++) {   
        
-        console.log(`id ${theProjects[i].id} priority ${theProjects[i].priority} ${theProjects[i].name} ${theProjects[i].location}` );
+        console.log(`${theProjects[i].id}, ${theProjects[i].priority}, ${theProjects[i].name}, ${theProjects[i].location}` );
         }
     }
 

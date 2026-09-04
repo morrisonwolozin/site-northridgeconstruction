@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Project Cost — Northridge Construction</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body { font-family:'DM Sans',sans-serif; background:#1e2a26; color:#f4f5f3; -webkit-font-smoothing:antialiased; margin:0; }
+
+    .est-input {
+      background:rgba(255,255,255,0.06); border:1px solid rgba(244,245,243,0.15);
+      color:#f4f5f3; padding:0.5rem 0.75rem;
+      font-family:'DM Sans',sans-serif; font-size:0.875rem; width:100%;
+      transition:border-color 0.2s;
+    }
+    .est-input:focus { outline:none; border-color:#3d6b5a; }
+    .est-input::placeholder { color:rgba(244,245,243,0.28); }
+    select.est-input option { background:#1e2a26; color:#f4f5f3; }
+    select.est-input optgroup { background:#1e2a26; color:rgba(244,245,243,0.45); }
+
+    .space-row, #add-row {
+      display:grid;
+      grid-template-columns:1fr 160px 90px 28px;
+      gap:0.375rem; align-items:center;
+    }
+    #add-row { margin-top:0.375rem; }
+
+    .col-headers {
+      display:grid;
+      grid-template-columns:1fr 160px 90px 28px;
+      gap:0.375rem; margin-bottom:0.375rem;
+    }
+    .col-hdr {
+      font-size:0.6rem; letter-spacing:0.1em; text-transform:uppercase;
+      color:rgba(244,245,243,0.32); font-weight:600; padding:0 0.75rem;
+    }
+
+    .add-btn {
+      width:28px; height:38px; background:#3d6b5a; color:#fff;
+      border:none; cursor:pointer; font-size:1.1rem; transition:background 0.2s;
+    }
+    .add-btn:hover { background:#2e5244; }
+    .rem-btn {
+      width:28px; height:38px; background:transparent;
+      color:rgba(244,245,243,0.3); border:1px solid rgba(244,245,243,0.12);
+      cursor:pointer; font-size:0.9rem; transition:color 0.2s,border-color 0.2s;
+    }
+    .rem-btn:hover { color:#e8a8a8; border-color:#e8a8a8; }
+    .cta-btn {
+      display:inline-block; margin-top:1.75rem; padding:0.7rem 1.75rem;
+      background:#3d6b5a; color:#fff; font-size:0.75rem; font-weight:600;
+      letter-spacing:0.1em; text-transform:uppercase; text-decoration:none;
+      border:none; cursor:pointer; transition:background 0.2s;
+    }
+    .cta-btn:hover { background:#2e5244; }
+
+    #summary-bar {
+      display:grid; grid-template-columns:repeat(3,1fr);
+      gap:1px; background:rgba(244,245,243,0.08); margin-top:2rem;
+    }
+    .summary-cell { background:rgba(255,255,255,0.04); padding:1rem 1.25rem; }
+    .summary-cell .val { font-family:'Lora',serif; font-size:1.5rem; font-weight:700; color:#f4f5f3; line-height:1; }
+    .summary-cell .lbl { font-size:0.62rem; letter-spacing:0.1em; text-transform:uppercase; color:rgba(244,245,243,0.38); margin-top:0.35rem; }
+
+    .cost-tbl { width:100%; border-collapse:collapse; }
+    .cost-tbl th {
+      font-size:0.65rem; letter-spacing:0.11em; text-transform:uppercase;
+      font-weight:600; color:rgba(244,245,243,0.38);
+      padding:0 0 0.5rem; text-align:left;
+      border-bottom:1px solid rgba(244,245,243,0.1);
+    }
+    .cost-tbl th:last-child { text-align:right; }
+    .cost-tbl td {
+      padding:0.5rem 0; font-size:0.85rem;
+      border-bottom:1px solid rgba(244,245,243,0.06);
+      color:#f4f5f3; vertical-align:top;
+    }
+    .cost-tbl td:last-child { text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap; }
+    .cost-tbl td.section-head {
+      font-size:0.62rem; letter-spacing:0.12em; text-transform:uppercase;
+      color:rgba(244,245,243,0.35); padding-top:1.1rem; padding-bottom:0.2rem;
+      border-bottom:none;
+    }
+    .cost-tbl tr.subtotal-row td {
+      border-top:1px solid rgba(244,245,243,0.15); border-bottom:none;
+      padding-top:0.65rem; font-size:0.82rem; font-weight:600;
+      color:rgba(244,245,243,0.7);
+    }
+    .cost-tbl tr.section-total-row td {
+      border-top:1px solid rgba(244,245,243,0.2); border-bottom:none;
+      padding-top:0.75rem; font-size:0.9rem; font-weight:600; color:#c8ddd5;
+    }
+    .cost-tbl tr.grand-total-row td {
+      border-top:2px solid rgba(244,245,243,0.3); border-bottom:none;
+      padding-top:0.875rem; font-family:'Lora',serif;
+      font-size:1.1rem; font-weight:700; color:#a8c8b8;
+    }
+    .cost-tbl tr.dimmed td { color:rgba(244,245,243,0.3); }
+
+    .site-toggle {
+      display:flex; align-items:center; gap:0.75rem;
+      padding:0.6rem 0.875rem;
+      background:rgba(255,255,255,0.04);
+      border:1px solid rgba(244,245,243,0.08);
+      cursor:pointer; transition:background 0.15s; user-select:none;
+    }
+    .site-toggle:hover { background:rgba(255,255,255,0.07); }
+    .site-toggle input[type=checkbox] { width:15px; height:15px; accent-color:#3d6b5a; cursor:pointer; flex-shrink:0; }
+    .site-toggle .toggle-name { font-size:0.875rem; flex:1; }
+    .site-toggle .toggle-cost { font-size:0.875rem; font-variant-numeric:tabular-nums; color:rgba(244,245,243,0.55); }
+
+    #empty-state {
+      border:1px dashed rgba(244,245,243,0.1); padding:2.5rem;
+      text-align:center; color:rgba(244,245,243,0.25);
+      font-size:0.85rem; line-height:1.7;
+    }
+    #loading-state {
+      padding:2rem; text-align:center;
+      color:rgba(244,245,243,0.35); font-size:0.85rem;
+    }
+    #error-state {
+      padding:1.5rem; background:rgba(232,168,168,0.1);
+      border:1px solid rgba(232,168,168,0.2);
+      color:#e8a8a8; font-size:0.85rem; line-height:1.6; display:none;
+    }
+    .disclaimer {
+      font-size:0.7rem; color:rgba(244,245,243,0.28);
+      line-height:1.65; margin-top:1.25rem;
+    }
+  </style>
+</head>
+<body>
+<section style="padding:4rem 2rem; max-width:1200px; margin:0 auto;">
+
+  <p style="font-size:0.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#a8c8b8;margin-bottom:0.75rem;">Interactive Tool</p>
+  <h2 style="font-family:'Lora',serif;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:700;color:#f4f5f3;line-height:1.2;margin-bottom:0.875rem;">Your Project Cost</h2>
+  <div style="width:2.5rem;height:2px;background:#3d6b5a;margin-bottom:1.25rem;"></div>
+  <p style="color:rgba(244,245,243,0.55);line-height:1.8;font-size:0.9rem;max-width:640px;margin-bottom:2.5rem;">
+    Build your room program below. Select a space type, give it a name, and enter its area.
+    Toggle site items on or off to match your lot situation.
+    Costs are rough order-of-magnitude estimates based on 2023 Midcoast Maine project data —
+    contact us for a detailed estimate.
+  </p>
+
+  <!-- Rate load error -->
+  <div id="error-state">
+    Unable to load cost data. Make sure the file
+    <code>data/rates-northridge.json</code> is present and the page
+    is served from a local server (not opened directly as a file).
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start;">
+
+    <!-- LEFT -->
+    <div>
+      <p style="font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,245,243,0.4);margin-bottom:0.875rem;">Room Program</p>
+
+      <div class="col-headers">
+        <span class="col-hdr">Space Name</span>
+        <span class="col-hdr">Type</span>
+        <span class="col-hdr" style="text-align:right;">Area (sf)</span>
+        <span></span>
+      </div>
+
+      <div id="space-list" style="display:flex;flex-direction:column;gap:0.375rem;"></div>
+
+      <div id="add-row">
+        <input id="inp-name" class="est-input" type="text" placeholder="e.g. Primary Bedroom" />
+        <select id="inp-type" class="est-input">
+          <option value="">— type —</option>
+          <optgroup label="Living Spaces">
+            <option value="living">Living / Dining</option>
+            <option value="bedroom">Bedroom</option>
+            <option value="office">Office / Study</option>
+            <option value="mudroom">Mudroom / Entry</option>
+          </optgroup>
+          <optgroup label="Wet Rooms">
+            <option value="kitchen">Kitchen</option>
+            <option value="bath-full">Full Bathroom</option>
+            <option value="bath-half">Half Bathroom</option>
+            <option value="laundry">Laundry Room</option>
+          </optgroup>
+          <optgroup label="Utility / Other">
+            <option value="mechanical">Mechanical Room</option>
+            <option value="unfinished">Unfinished / Storage</option>
+          </optgroup>
+        </select>
+        <input id="inp-area" class="est-input" type="number" placeholder="sf" min="1" style="text-align:right;" />
+        <button class="add-btn" onclick="addSpace()" title="Add space">+</button>
+      </div>
+      <p style="font-size:0.68rem;color:rgba(244,245,243,0.22);margin-top:0.5rem;">Tab between fields · Enter in area to add</p>
+
+      <div id="summary-bar">
+        <div class="summary-cell"><div class="val" id="sum-sf">—</div><div class="lbl">Conditioned sf</div></div>
+        <div class="summary-cell"><div class="val" id="sum-rooms">—</div><div class="lbl">Spaces</div></div>
+        <div class="summary-cell"><div class="val" id="sum-baths">—</div><div class="lbl">Bathrooms</div></div>
+      </div>
+
+      <!-- Site toggles — built from JSON -->
+      <div style="margin-top:2.5rem;">
+        <p style="font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:rgba(244,245,243,0.4);margin-bottom:0.875rem;">Site Costs — toggle to match your lot</p>
+        <div id="site-toggles" style="display:flex;flex-direction:column;gap:0.375rem;">
+          <div id="loading-state">Loading cost data…</div>
+        </div>
+        <p style="font-size:0.68rem;color:rgba(244,245,243,0.22);margin-top:0.6rem;">Uncheck items already in place (existing well, municipal sewer, etc.)</p>
+      </div>
+    </div>
+
+    <!-- RIGHT -->
+    <div>
+      <div id="empty-state">Add your first space<br/>to see the cost breakdown.</div>
+      <div id="cost-panel" style="display:none;">
+        <table class="cost-tbl">
+          <thead><tr><th>Trade / Division</th><th style="text-align:right;">Estimated Cost</th></tr></thead>
+          <tbody id="cost-body"></tbody>
+        </table>
+        <a href="#contact" class="cta-btn">Contact Northridge for a real estimate →</a>
+        <p class="disclaimer" id="disclaimer-text"></p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+// ════════════════════════════════════════════════════════
+//  STATE
+// ════════════════════════════════════════════════════════
+let RATES   = null;   // populated after JSON fetch
+let spaces  = [];
+let nextId  = 1;
+
+// Space types that do not contribute to conditioned sf
+const UNCONDITIONED = new Set(['unfinished', 'garage']);
+
+// ════════════════════════════════════════════════════════
+//  BOOT — fetch rate table then initialise
+// ════════════════════════════════════════════════════════
+async function boot() {
+  try {
+    const res = await fetch('data/rates-northridge.json');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    RATES = await res.json();
+    buildSiteToggles();
+    buildDisclaimer();
+    // Zero out loading placeholders
+    document.getElementById('sum-sf').textContent    = '0';
+    document.getElementById('sum-rooms').textContent = '0';
+    document.getElementById('sum-baths').textContent = '0';
+    renderSpaces();
+  } catch(err) {
+    document.getElementById('loading-state').style.display = 'none';
+    document.getElementById('error-state').style.display   = 'block';
+    console.error('Failed to load rates:', err);
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  SITE TOGGLES
+// ════════════════════════════════════════════════════════
+function buildSiteToggles() {
+  const container = document.getElementById('site-toggles');
+  container.innerHTML = '';
+  RATES.site.forEach(item => {
+    const label = document.createElement('label');
+    label.className = 'site-toggle';
+    label.innerHTML = `
+      <input type="checkbox" ${item.default_checked ? 'checked' : ''}
+        onchange="toggleSite('${item.id}', this.checked)" />
+      <span class="toggle-name">${item.display_name}</span>
+      <span class="toggle-cost">${fmt(item.fixed)}</span>
+    `;
+    // Store checked state on the item itself
+    item._checked = item.default_checked;
+    container.appendChild(label);
+  });
+}
+
+function toggleSite(id, checked) {
+  const item = RATES.site.find(s => s.id === id);
+  if (item) { item._checked = checked; renderCosts(); }
+}
+
+// ════════════════════════════════════════════════════════
+//  DISCLAIMER — built from JSON meta
+// ════════════════════════════════════════════════════════
+function buildDisclaimer() {
+  const m   = RATES.meta;
+  const ref = m.reference_projects[0];
+  document.getElementById('disclaimer-text').textContent =
+    `Rough order-of-magnitude estimate · Based on ${ref.year} Midcoast Maine project data (${ref.occupied_sf} sf reference) · ` +
+    `${ref.estimate_status} · Actual costs vary with design complexity, finish selections, site conditions, and market pricing · ` +
+    `Appliances, landscaping, security, and water treatment excluded · Not a contract or commitment.`;
+}
+
+// ════════════════════════════════════════════════════════
+//  FORMATTERS
+// ════════════════════════════════════════════════════════
+function fmt(n)  { return '$' + Math.round(n).toLocaleString('en-US'); }
+function escH(s) { return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;'); }
+
+// ════════════════════════════════════════════════════════
+//  RENDER SPACE LIST
+// ════════════════════════════════════════════════════════
+function renderSpaces() {
+  const list = document.getElementById('space-list');
+  list.innerHTML = '';
+  spaces.forEach(sp => {
+    const row = document.createElement('div');
+    row.className = 'space-row';
+    row.innerHTML = `
+      <input class="est-input" type="text" value="${escH(sp.name)}"
+        oninput="updateSpace(${sp.id},'name',this.value)" />
+      <select class="est-input" onchange="updateSpace(${sp.id},'type',this.value)">
+        <option value="">— type —</option>
+        <optgroup label="Living Spaces">
+          <option value="living"     ${sp.type==='living'    ?'selected':''}>Living / Dining</option>
+          <option value="bedroom"    ${sp.type==='bedroom'   ?'selected':''}>Bedroom</option>
+          <option value="office"     ${sp.type==='office'    ?'selected':''}>Office / Study</option>
+          <option value="mudroom"    ${sp.type==='mudroom'   ?'selected':''}>Mudroom / Entry</option>
+        </optgroup>
+        <optgroup label="Wet Rooms">
+          <option value="kitchen"    ${sp.type==='kitchen'   ?'selected':''}>Kitchen</option>
+          <option value="bath-full"  ${sp.type==='bath-full' ?'selected':''}>Full Bathroom</option>
+          <option value="bath-half"  ${sp.type==='bath-half' ?'selected':''}>Half Bathroom</option>
+          <option value="laundry"    ${sp.type==='laundry'   ?'selected':''}>Laundry Room</option>
+        </optgroup>
+        <optgroup label="Utility / Other">
+          <option value="mechanical" ${sp.type==='mechanical'?'selected':''}>Mechanical Room</option>
+          <option value="unfinished" ${sp.type==='unfinished'?'selected':''}>Unfinished / Storage</option>
+        </optgroup>
+      </select>
+      <input class="est-input" type="number" value="${sp.area||''}" min="1"
+        style="text-align:right;"
+        oninput="updateSpace(${sp.id},'area',parseInt(this.value)||0)" />
+      <button class="rem-btn" onclick="removeSpace(${sp.id})" title="Remove">×</button>
+    `;
+    list.appendChild(row);
+  });
+  renderCosts();
+}
+
+// ════════════════════════════════════════════════════════
+//  CALCULATE & RENDER COSTS
+// ════════════════════════════════════════════════════════
+function renderCosts() {
+  if (!RATES) return;
+
+  // Conditioned sf — exclude unconditioned types
+  const condSf = spaces
+    .filter(sp => !UNCONDITIONED.has(sp.type))
+    .reduce((s,sp) => s + (sp.area||0), 0);
+
+  // Finished sf — exclude unfinished basement + unconditioned
+  // For now all conditioned non-unfinished spaces count as finished
+  const finishedSf = spaces
+    .filter(sp => sp.type !== 'unfinished' && !UNCONDITIONED.has(sp.type))
+    .reduce((s,sp) => s + (sp.area||0), 0);
+
+  const bathCount = spaces.filter(sp =>
+    sp.type === 'bath-full' || sp.type === 'bath-half').length;
+
+  document.getElementById('sum-sf').textContent    = condSf.toLocaleString('en-US');
+  document.getElementById('sum-rooms').textContent = spaces.length;
+  document.getElementById('sum-baths').textContent = bathCount;
+
+  const empty     = document.getElementById('empty-state');
+  const costPanel = document.getElementById('cost-panel');
+
+  if (spaces.length === 0) {
+    empty.style.display     = 'block';
+    costPanel.style.display = 'none';
+    return;
+  }
+  empty.style.display     = 'none';
+  costPanel.style.display = 'block';
+
+  // ── Trade costs ─────────────────────────────────────
+  let houseSubtotal = 0;
+  const tradeRows = RATES.trades.map(t => {
+    // Choose sf basis
+    const sf = t.rate_basis === 'finished_sf' ? finishedSf : condSf;
+    const cost = t.fixed + t.rate * sf;
+    houseSubtotal += cost;
+    return {
+      name: t.display_name,
+      cost,
+      csi:  t.csi,
+      dim:  sf === 0 && t.rate > 0
+    };
+  });
+
+  // Group trade rows by CSI division for display
+  const csiGroups = {};
+  tradeRows.forEach(r => {
+    if (!csiGroups[r.csi]) csiGroups[r.csi] = [];
+    csiGroups[r.csi].push(r);
+  });
+
+  // ── Per-occurrence allowances ────────────────────────
+  const occTally = {};
+  spaces.forEach(sp => {
+    RATES.per_occurrence
+      .filter(item => item.triggers.includes(sp.type))
+      .forEach(item => {
+        if (!occTally[item.id]) {
+          occTally[item.id] = { name: item.display_name, cost: 0, count: 0 };
+        }
+        occTally[item.id].cost  += item.fixed;
+        occTally[item.id].count += 1;
+      });
+  });
+  const occRows  = Object.values(occTally);
+  const occTotal = occRows.reduce((s,r) => s + r.cost, 0);
+  houseSubtotal += occTotal;
+
+  // ── GC fee ───────────────────────────────────────────
+  const gcCost     = houseSubtotal * (RATES.meta.gc_fee_percent / 100);
+  const houseTotal = houseSubtotal + gcCost;
+
+  // ── Site costs ────────────────────────────────────────
+  const siteRows   = RATES.site.filter(s => s._checked);
+  const siteTotal  = siteRows.reduce((s,r) => s + r.fixed, 0);
+
+  const projectTotal = houseTotal + siteTotal;
+
+  // ── Build table ──────────────────────────────────────
+  const tbody = document.getElementById('cost-body');
+  tbody.innerHTML = '';
+
+  function addHead(label) {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td class="section-head" colspan="2">${label}</td>`;
+    tbody.appendChild(tr);
+  }
+  function addRow(name, cost, dim=false) {
+    const tr = document.createElement('tr');
+    if (dim) tr.className = 'dimmed';
+    tr.innerHTML = `<td>${name}${dim?' <span style="font-size:0.7rem;color:rgba(244,245,243,0.3)">(add conditioned spaces)</span>':''}</td><td>${fmt(cost)}</td>`;
+    tbody.appendChild(tr);
+  }
+  function addSubtotal(label, cost, cls='subtotal-row') {
+    const tr = document.createElement('tr');
+    tr.className = cls;
+    tr.innerHTML = `<td>${label}</td><td>${fmt(cost)}</td>`;
+    tbody.appendChild(tr);
+  }
+  function addGrandTotal(label, cost) {
+    const tr = document.createElement('tr');
+    tr.className = 'grand-total-row';
+    tr.innerHTML = `<td>${label}</td><td>${fmt(cost)}</td>`;
+    tbody.appendChild(tr);
+  }
+
+  // House section header
+  addHead(`House — ${condSf.toLocaleString()} conditioned sf`);
+
+  // Trades — each on its own row, ordered as in JSON
+  tradeRows.forEach(r => addRow(r.name, r.cost, r.dim));
+
+  // Per-occurrence allowances
+  if (occRows.length > 0) {
+    addHead('Allowances — Kitchens & Wet Rooms');
+    occRows.forEach(r => {
+      const label = r.count > 1 ? `${r.name} × ${r.count}` : r.name;
+      addRow(label, r.cost);
+    });
+  }
+
+  // House subtotals
+  addSubtotal('House subtotal (before GC fee)', houseSubtotal);
+  addRow(`GC fee (${RATES.meta.gc_fee_percent}%)`, gcCost);
+  addSubtotal('House Total', houseTotal, 'section-total-row');
+
+  // Site section
+  addHead('Site');
+  if (siteRows.length > 0) {
+    siteRows.forEach(r => addRow(r.display_name, r.fixed));
+    addSubtotal('Site Total', siteTotal, 'section-total-row');
+  } else {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td colspan="2" style="font-size:0.78rem;color:rgba(244,245,243,0.25);padding:0.4rem 0;">No site items selected.</td>`;
+    tbody.appendChild(tr);
+  }
+
+  // Grand total
+  addGrandTotal('Project Total — Rough Estimate', projectTotal);
+
+  // $/sf note
+  if (condSf > 0) {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td colspan="2" style="font-size:0.72rem;color:rgba(244,245,243,0.35);padding-top:0.75rem;border:none;line-height:1.8;">
+        House: <strong style="color:rgba(244,245,243,0.55)">${fmt(houseTotal/condSf)}/sf</strong> conditioned ·
+        Full project: <strong style="color:rgba(244,245,243,0.55)">${fmt(projectTotal/condSf)}/sf</strong> conditioned
+      </td>`;
+    tbody.appendChild(tr);
+  }
+}
+
+// ════════════════════════════════════════════════════════
+//  SPACE CRUD
+// ════════════════════════════════════════════════════════
+function addSpace() {
+  const nameEl = document.getElementById('inp-name');
+  const typeEl = document.getElementById('inp-type');
+  const areaEl = document.getElementById('inp-area');
+  const name   = nameEl.value.trim();
+  const type   = typeEl.value;
+  const area   = parseInt(areaEl.value) || 0;
+
+  let valid = true;
+  if (!name) { nameEl.style.borderColor='#e8a8a8'; valid=false; }
+  if (!type) { typeEl.style.borderColor='#e8a8a8'; valid=false; }
+  if (!valid) {
+    setTimeout(() => { nameEl.style.borderColor=''; typeEl.style.borderColor=''; }, 1200);
+    return;
+  }
+
+  spaces.push({ id:nextId++, name, type, area });
+  nameEl.value = ''; typeEl.value = ''; areaEl.value = '';
+  nameEl.focus();
+  renderSpaces();
+}
+
+function removeSpace(id) {
+  spaces = spaces.filter(sp => sp.id !== id);
+  renderSpaces();
+}
+
+function updateSpace(id, field, value) {
+  const sp = spaces.find(s => s.id === id);
+  if (sp) { sp[field] = value; renderCosts(); }
+}
+
+// Keyboard nav
+document.getElementById('inp-name').addEventListener('keydown', e => {
+  if (e.key === 'Enter') { e.preventDefault(); document.getElementById('inp-type').focus(); }
+});
+document.getElementById('inp-type').addEventListener('keydown', e => {
+  if (e.key === 'Enter') { e.preventDefault(); document.getElementById('inp-area').focus(); }
+});
+document.getElementById('inp-area').addEventListener('keydown', e => {
+  if (e.key === 'Enter') { e.preventDefault(); addSpace(); }
+});
+
+// ── Boot ──────────────────────────────────────────────
+boot();
+</script>
+</body>
+</html>

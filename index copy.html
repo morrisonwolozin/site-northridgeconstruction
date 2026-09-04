@@ -124,11 +124,11 @@
     }
 
     /* ── Project grid ─────────────────────────────────── */
-     .project-card {
+    .project-card {
       position: relative;
       overflow: hidden;
       aspect-ratio: 4/3;
-      cursor: pointer;
+      cursor: default;
       background: #d1d8d4;
     }
     .project-card img {
@@ -138,41 +138,17 @@
       display: block;
     }
     .project-card:hover img { transform: scale(1.04); }
-
     .card-overlay {
       position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(30,42,38,0.90) 0%, rgba(30,42,38,0.15) 60%, transparent 100%);
+      background: linear-gradient(to top, rgba(30,42,38,0.82) 0%, transparent 55%);
       opacity: 0;
       transition: opacity 0.3s ease;
       display: flex; align-items: flex-end;
-      padding: 1.5rem;
+      padding: 1.25rem;
     }
     .project-card:hover .card-overlay { opacity: 1; }
-    .card-overlay .card-eyebrow {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      color: #ffffff;
-      margin-bottom: 0.35rem;
-    }
-    .card-overlay .card-title {
-      font-family: 'DM Sans';
-      font-size: 1.2rem;
-      font-weight: bold;
-      color: #ffffff;
-      line-height: 1.2;
-      margin-bottom: 0.3rem;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
-    }
-    .card-overlay .card-sub {
-      font-size: 0.75rem;
-      font-weight: bold;
-      color: rgba(244,245,243,0.7);
-      margin-top: 0.1rem;
-    }
 
-    /* Camera icon — signals clickable gallery */
+    /* Gallery photo-count badge */
     .gallery-badge {
       position: absolute; top: 0.75rem; right: 0.75rem;
       background: rgba(30,42,38,0.65);
@@ -185,62 +161,34 @@
       transition: opacity 0.3s ease;
     }
     .project-card:hover .gallery-badge { opacity: 1; }
-    .gallery-badge.hero-only { display: none; } /* hide if no gallery */
 
-    /* Filter buttons */
-    .filter-btn {
-      font-size: 0.75rem; font-weight: 500;
-      letter-spacing: 0.07em; text-transform: uppercase;
-      padding: 0.4rem 1rem;
-      border: 1px solid #3a4a44; color: #3a4a44;
-      background: transparent; transition: all 0.2s ease; cursor: pointer;
-    }
-    .filter-btn:hover, .filter-btn.active {
-      background: #3d6b5a; border-color: #3d6b5a; color: #fff;
-    }
-
-    /* Hidden GLightbox anchor — invisible trigger links */
-    .glightbox-hidden {
-      position: absolute; width: 0; height: 0;
-      overflow: hidden; pointer-events: none;
-    }
-
-    .glightbox-clean .gdesc-inner { padding: 1rem 1.5rem; }
-    .glightbox-clean .gslide-title {
-      
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #1e2a26;
-      margin-bottom: 0.25rem;
-    }
-    .glightbox-clean .gslide-desc {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #1e2a26;
-    }
-
-    /* Section eyebrow */
-    .eyebrow {
-      font-size: 0.7rem; font-weight: bold;
-      letter-spacing: 0.14em; text-transform: uppercase; color: #3d6b5a;
-      margin-bottom: 0.75rem;
-    }
-    .section-title {
-      font-size: clamp(1.75rem, 3vw, 2.5rem);
-      font-weight: 700; color: #1e2a26; line-height: 1.2;
-    }
-    .section-rule {
-      width: 2.5rem; height: 2px;
-      background: #3d6b5a; margin: 1.25rem 0 1.75rem;
-    }
-
-    /* Image missing fallback */
+    /* Missing image fallback */
     .img-missing {
       width: 100%; height: 100%;
       display: flex; align-items: center; justify-content: center;
       background: #d1d8d4;
-      color: rgba(30,42,38,0.3); font-size: 0.75rem;
-      text-align: center; padding: 1rem;
+      color: rgba(30,42,38,0.3); font-size: 0.72rem;
+      text-align: center; padding: 1rem; line-height: 1.5;
+    }
+
+    /* ── Filter buttons ───────────────────────────────── */
+    .filter-btn {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border: 1px solid #3a4a44;
+      color: #3a4a44;
+      background: transparent;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: #3d6b5a;
+      border-color: #3d6b5a;
+      color: #fff;
     }
 
     /* ── Team cards ───────────────────────────────────── */
@@ -391,8 +339,8 @@
 
     <!-- Wordmark -->
     <a href="#hero" class="flex flex-col leading-none">
-      <span style="font-family:'Lora',serif;font-size:1.3rem;font-weight:700;color:#f4f5f3;letter-spacing:0.02em;transition:color 0.3s;" id="nav-wordmark">Northridge Construction LLC</span>
-      <span style="font-size:0.8rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(244,245,243,0.55);transition:color 0.3s;" id="nav-sub"> Union, Maine</span>
+      <span style="font-family:'Lora',serif;font-size:1rem;font-weight:700;color:#f4f5f3;letter-spacing:0.02em;transition:color 0.3s;" id="nav-wordmark">Northridge Construction</span>
+      <span style="font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(244,245,243,0.55);transition:color 0.3s;" id="nav-sub">LLC · Union, Maine</span>
     </a>
 
     <!-- Desktop links -->
@@ -435,11 +383,11 @@
 ══════════════════════════════════════════════ -->
 <section id="hero">
   <!-- Slides — src paths match existing asset structure -->
-  <div class="hero-slide active" style="background-image:url('assets/img/portfolio/modern-bungalow-camden-00.webp')"></div>
-  <div class="hero-slide" style="background-image:url('assets/img/portfolio/greek-revival-belfast-00.webp')"></div>
-  <div class="hero-slide" style="background-image:url('assets/img/portfolio/modern-ranch-lincolnville-00.webp')"></div>
-  <div class="hero-slide" style="background-image:url('assets/img/portfolio/modern-cottage-south-thomaston-00.webp')"></div>
-  <div class="hero-slide" style="background-image:url('assets/img/portfolio/modern-colonial-lincolnville-00.webp')"></div>
+  <div class="hero-slide active" style="background-image:url('assets/img/portfolio/portfolio-3.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('assets/img/portfolio/portfolio-4.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('assets/img/portfolio/portfolio-2.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('assets/img/portfolio/portfolio-10.jpg')"></div>
+  <div class="hero-slide" style="background-image:url('assets/img/portfolio/portfolio-9.jpg')"></div>
 
   <div class="hero-overlay"></div>
 
@@ -447,7 +395,7 @@
     <div class="max-w-7xl mx-auto">
       <p style="font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(244,245,243,0.65);margin-bottom:0.75rem;">Mid-coast Maine · High-Performance Residential</p>
       <h1 style="font-family:'Lora',serif;font-size:clamp(2rem,5vw,3.75rem);font-weight:700;color:#f4f5f3;line-height:1.1;max-width:720px;margin-bottom:1.25rem;">
-        Crafted homes.<br/>Transparent costs.<br/>Top-notch partners.
+        Crafted homes.<br/>Transparent costs.<br/>Trusted tradespeople.
       </h1>
       <div style="display:flex;gap:1rem;flex-wrap:wrap;">
         <a href="#your-project" class="btn-primary">Estimate Your Project</a>
@@ -514,29 +462,28 @@
      PROJECTS
 ══════════════════════════════════════════════ -->
 <section id="projects" class="py-24 px-6 md:px-10" style="background:#e8eae6;">
-  <div style="max-width:1280px; margin:0 auto;">
+  <div class="max-w-7xl mx-auto">
 
-    <div style="display:flex;flex-direction:column;gap:0;" class="mb-10">
-      <p class="eyebrow">Portfolio</p>
-      <h2 class="section-title">Selected Projects</h2>
-      <div class="section-rule"></div>
+    <div class="reveal flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+      <div>
+        <p class="section-eyebrow">Portfolio</p>
+        <h2 class="section-title">Recent Projects</h2>
+        <div class="section-rule" style="margin-bottom:0;"></div>
+      </div>
+      <!-- Filter buttons -->
+      <div class="flex flex-wrap gap-2">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="current">Current</button>
+        <button class="filter-btn" data-filter="new-construction">New Construction</button>
+        <button class="filter-btn" data-filter="renovation">Renovation</button>
+      </div>
     </div>
 
-    <!-- Filter buttons -->
-    <div style="display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2rem;">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="current">Current</button>
-      <button class="filter-btn" data-filter="new-construction">New Construction</button>
-      <button class="filter-btn" data-filter="renovation">Renovation</button>
+    <div id="project-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
     </div>
 
-    <!-- Project grid — built by JS -->
-    <div id="project-grid"
-      style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#d1d8d4;">
-    </div>
-
-    <!-- Hidden GLightbox anchor pool — one set per project -->
-    <div id="lightbox-anchors" class="glightbox-hidden" aria-hidden="true"></div>
+    <!-- Hidden GLightbox anchor pool -->
+    <div id="lightbox-anchors" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none;" aria-hidden="true"></div>
 
   </div>
 </section>
@@ -548,51 +495,41 @@
 <section id="delivery" class="py-24 px-6 md:px-10 bg-parchment">
   <div class="max-w-7xl mx-auto">
 
-    <div class="reveal max-w-2xl mb-4">
+    <div class="reveal max-w-2xl mb-14">
       <p class="section-eyebrow">How We Work</p>
       <h2 class="section-title">Delivery — Cost Transparency in Practice</h2>
       <div class="section-rule"></div>
-        <p style="color:#3a4a44;line-height:1.8;">
-          Before we break ground, you receive a detailed cost estimate broken down by trade. No lump-sum mystery numbers. The pages below document completed projects — what was built, how it was organized, and what it actually cost — so you can begin a conversation with Northridge knowing what to expect.
-        </p>
+      <p style="color:#3a4a44;line-height:1.8;">
+        Before we break ground, you receive a detailed cost estimate broken down by trade. No lump-sum mystery numbers. The pages below document completed projects — what was built, how it was organized, and what it actually cost — so you can walk into a conversation with Northridge already knowing what to expect.
+      </p>
     </div>
 
     <!-- Case study cards -->
     <div class="grid md:grid-cols-3 gap-px bg-fog-dark">
 
-      <a href="delivery/18-cottage-south-thomaston-estimate.html" class="reveal group" style="background:#faf9f7;padding:2rem;text-decoration:none;transition:background 0.2s ease;display:block;" onmouseover="this.style.background='#f0f2ef'" onmouseout="this.style.background='#faf9f7'">
-        <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#6b7f78;margin-bottom:0.75rem;">New Construction · 2026</p>
-        <h3 style="font-family:'Lora',serif;font-size:1.2rem;font-weight:600;color:#1e2a26;margin-bottom:0.5rem;">820 SF Home — South Thomaston, ME</h3>
-        <p style="font-size:0.85rem;color:#3a4a44;line-height:1.6;margin-bottom:1.25rem;">Complete trade-by-trade building estimate for a new construction home. The transparency of this estimate was cited by the client as a key reason for choosing Northridge.</p>
-        <p style="font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:#3d6b5a;font-weight:600;">View Estimate →</p>
-      </a>
-
-      <a href="delivery/01-bungalow-camden-estimate.html" class="reveal group" style="background:#faf9f7;padding:2rem;text-decoration:none;transition:background 0.2s ease;display:block;" onmouseover="this.style.background='#f0f2ef'" onmouseout="this.style.background='#faf9f7'">
-        <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#6b7f78;margin-bottom:0.75rem;">New Construction · 2026</p>
-        <h3 style="font-family:'Lora',serif;font-size:1.2rem;font-weight:600;color:#1e2a26;margin-bottom:0.5rem;">1,000 SF Home — Camden, ME</h3>
-        <p style="font-size:0.85rem;color:#3a4a44;line-height:1.6;margin-bottom:1.25rem;">Complete trade-by-trade building estimate for a high-performance new construction home. The transparency of this estimate was cited by the client as a key reason for choosing Northridge.</p>
-        <p style="font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:#3d6b5a;font-weight:600;">View Estimate →</p>
-      </a>
-
-      <a href="delivery/05-aframe-union-estimate.html" class="reveal group" style="background:#faf9f7;padding:2rem;text-decoration:none;transition:background 0.2s ease;display:block;" onmouseover="this.style.background='#f0f2ef'" onmouseout="this.style.background='#faf9f7'">
-        <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#6b7f78;margin-bottom:0.75rem;">New Construction · 2025</p>
-        <h3 style="font-family:'Lora',serif;font-size:1.2rem;font-weight:600;color:#1e2a26;margin-bottom:0.5rem;">1,485 SF Home — Union, ME</h3>
-        <p style="font-size:0.85rem;color:#3a4a44;line-height:1.6;margin-bottom:1.25rem;">Complete trade-by-trade building estimate for an A-frame new construction home. The transparency of this estimate was cited by the client as a key reason for choosing Northridge.</p>
-        <p style="font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:#3d6b5a;font-weight:600;">View Estimate →</p>
-      </a>
-
-      <a href="delivery/08-modern-ranch-lincolnville-estimate.html" class="reveal group" style="background:#faf9f7;padding:2rem;text-decoration:none;transition:background 0.2s ease;display:block;" onmouseover="this.style.background='#f0f2ef'" onmouseout="this.style.background='#faf9f7'">
+      <a href="delivery/sample-estimate-1.html" class="reveal group" style="background:#faf9f7;padding:2rem;text-decoration:none;transition:background 0.2s ease;display:block;" onmouseover="this.style.background='#f0f2ef'" onmouseout="this.style.background='#faf9f7'">
         <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#6b7f78;margin-bottom:0.75rem;">New Construction · 2023</p>
-        <h3 style="font-family:'Lora',serif;font-size:1.2rem;font-weight:600;color:#1e2a26;margin-bottom:0.5rem;">2,200 SF Home — Lincolnville, ME</h3>
+        <h3 style="font-family:'Lora',serif;font-size:1.2rem;font-weight:600;color:#1e2a26;margin-bottom:0.5rem;">1,900 sf Home — Camden, ME</h3>
         <p style="font-size:0.85rem;color:#3a4a44;line-height:1.6;margin-bottom:1.25rem;">Complete trade-by-trade building estimate for a high-performance new construction home. The transparency of this estimate was cited by the client as a key reason for choosing Northridge.</p>
         <p style="font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:#3d6b5a;font-weight:600;">View Estimate →</p>
       </a>
-    </div>
 
-    <div class="reveal max-w-2xl my-14">
-      <p style="color:#3a4a44;line-height:1.8;">
-        Additional case studies will be added here as projects are documented.
-      </p>
+      <!--
+      Additional case studies will be added here as projects are documented.
+
+      <div class="reveal" style="background:#faf9f7;padding:2rem;transition-delay:0.08s">
+        <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#6b7f78;margin-bottom:0.75rem;">New Construction · Coming Soon</p>
+        <h3 style="font-family:'Lora',serif;font-size:1.2rem;font-weight:600;color:#1e2a26;margin-bottom:0.5rem;">Modern Farmhouse</h3>
+        <p style="font-size:0.85rem;color:#3a4a44;line-height:1.6;">Cost study in preparation.</p>
+      </div>
+
+      <div class="reveal" style="background:#faf9f7;padding:2rem;transition-delay:0.16s">
+        <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#6b7f78;margin-bottom:0.75rem;">Renovation · Coming Soon</p>
+        <h3 style="font-family:'Lora',serif;font-size:1.2rem;font-weight:600;color:#1e2a26;margin-bottom:0.5rem;">Renovation / Addition</h3>
+        <p style="font-size:0.85rem;color:#3a4a44;line-height:1.6;">Cost study in preparation.</p>
+      </div>
+      -->
+
     </div>
   </div>
 </section>
@@ -611,7 +548,7 @@
       <p style="color:rgba(244,245,243,0.65);line-height:1.8;font-size:0.9rem;">
         Build your room program and get a rough order-of-magnitude cost estimate — broken down by trade, based on current Midcoast Maine project data. This is a planning tool, not a contract or bid.
       </p>
-      <a href="cost-predictor.html" style="display:inline-block;margin-top:2rem;padding:0.75rem 2rem;background:#3d6b5a;color:#fff;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#2e5244'" onmouseout="this.style.background='#3d6b5a'">Open Project Cost Estimator →</a>
+      <a href="estimator-dev.html" style="display:inline-block;margin-top:2rem;padding:0.75rem 2rem;background:#3d6b5a;color:#fff;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#2e5244'" onmouseout="this.style.background='#3d6b5a'">Open Project Cost Estimator →</a>
     </div>
 
   </div>
@@ -933,7 +870,7 @@
      FOOTER
 ══════════════════════════════════════════════ -->
 <footer style="background:#141e1b;padding:2rem 2.5rem;display:flex;flex-direction:column;gap:0.5rem;align-items:center;text-align:center;">
-  <p style="font-family:'Lora',serif;font-size:0.875rem;color:rgba(244,245,243,0.4);">Northridge Construction LLC · 1774 North Union Road, Union, ME 04862 · NorthridgeConstructionMe@gmail.com</p>
+  <p style="font-family:'Lora',serif;font-size:0.875rem;color:rgba(244,245,243,0.4);">Northridge Construction LLC · 1774 North Union Road, Union, ME 04862</p>
   <p style="font-size:0.7rem;color:rgba(244,245,243,0.2);letter-spacing:0.06em;">© <span id="footer-year"></span> · High-Performance Residential Construction · Mid-coast Maine · <a href="tel:+12075936089" style="color:rgba(244,245,243,0.2);text-decoration:none;">(207) 593-6089</a></p>
 </footer>
 
@@ -1058,66 +995,52 @@ document.getElementById('contact-form').addEventListener('submit', async functio
 
 <!-- Project grid — ES module -->
 <script type="module">
-// ── Import project data ───────────────────────────────────────────
-import { projectsGrid } from './assets/js/projects.js';
+import { projectsSorted } from './assets/js/projects.js';
 
-// ── Build grid ────────────────────────────────────────────────────
 const grid    = document.getElementById('project-grid');
 const anchors = document.getElementById('lightbox-anchors');
 
-projectsGrid.forEach(project => {
+projectsSorted.forEach(project => {
   const hasGallery = project.gallery && project.gallery.length > 0;
   const galleryId  = `gallery-${project.id}`;
 
-  // ── Card ───────────────────────────────────────────────────────
-  const card = document.createElement('div');
-  card.className   = 'project-card';
-  card.dataset.status = project.status;
-  card.dataset.type   = project.type;
-
-  // Type label for display
   const typeLabel = {
     'current':          'Current',
     'new-construction': 'New Construction',
     'renovation':       'Renovation',
   }[project.type] || project.type;
 
-  const details = [
-      project.conditioned_area ? `${project.conditioned_area.toLocaleString()} SF` : null,
-      project.bedrooms ? `${project.bedrooms} bed`            : null,
-      project.bathrooms? `${project.bathrooms} bath`          : null,
-    ].filter(Boolean).join(' · ');
-    
-  const eyebrow1 = [project.year,project.location ].filter(Boolean).join(' · ')
-  const eyebrow2 = [ details].filter(Boolean).join(' · ')
+  const statusLabel = project.status === 'current' ? 'Current · ' : '';
+
+  const card = document.createElement('div');
+  card.className = 'project-card reveal';
+  card.dataset.status = project.status;
+  card.dataset.type   = project.type;
 
   card.innerHTML = `
     <img
-      src="${project.drawing}"
+      src="${project.hero}"
       alt="${project.name} — ${project.location}"
       loading="lazy"
       onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
     />
     <div class="img-missing" style="display:none;">
-      ${project.name}<br/><span style="font-size:0.65rem;">${project.drawing.split('/').pop()}</span>
+      ${project.name}<br/>
+      <span style="font-size:0.65rem;opacity:0.6;">${project.hero.split('/').pop()}</span>
     </div>
-
     <div class="card-overlay">
       <div>
-        <p class="card-title">${project.name}</p>
-        <p class="card-eyebrow">${typeLabel} · ${eyebrow1}</p>
-        <p class="card-eyebrow"> ${eyebrow2}</p>
-        ${project.delivery_url
-          ? `<p class="card-eyebrow" style="margin-top:0.4rem;">
-          <a href="${project.delivery_url}"
-              style="color:#ffffff;text-decoration:none; rgba(255,255,255,0.95);"
-              onclick="event.stopPropagation();">
-            View Cost Estimate →
-            </a>
-          </p>`
-          : ''}
+        <p style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;
+          color:rgba(244,245,243,0.6);margin-bottom:0.25rem;">
+          ${statusLabel}${typeLabel} · ${project.location} · ${project.year}
+        </p>
+        <p style="font-family:'Lora',serif;font-size:1rem;font-weight:600;color:#f4f5f3;">
+          ${project.name}
+        </p>
         ${hasGallery
-          ? `<p class="card-sub">View ${project.gallery.length + 1} photos</p>`
+          ? `<p style="font-size:0.7rem;color:rgba(244,245,243,0.5);margin-top:0.3rem;">
+               View ${project.gallery.length + 1} photos
+             </p>`
           : ''}
       </div>
     </div>
@@ -1126,7 +1049,7 @@ projectsGrid.forEach(project => {
            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
              <rect x="1" y="3" width="14" height="10" rx="1.5" stroke="currentColor" stroke-width="1.25"/>
              <circle cx="8" cy="8" r="2.5" stroke="currentColor" stroke-width="1.25"/>
-             <path d="M5 3l1.5-2h3L11 3" stroke="currentColor" stroke-width="1.25"/>
+             <path d="M5 3l1.5-2h3L11 3" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
            </svg>
            ${project.gallery.length + 1}
          </div>`
@@ -1150,7 +1073,7 @@ projectsGrid.forEach(project => {
   // Hidden GLightbox anchors
   if (hasGallery) {
     const heroA = document.createElement('a');
-    heroA.href                  = project.drawing;
+    heroA.href                  = project.hero;
     heroA.className             = 'glightbox';
     heroA.dataset.gallery       = galleryId;
     heroA.dataset.title         = `${project.name} — ${project.location}`;

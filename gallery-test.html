@@ -60,13 +60,14 @@
       font-weight: bold;
       color: #ffffff;
       line-height: 1.2;
+      margin-bottom: 0.3rem;
       text-shadow: 0 1px 4px rgba(0,0,0,0.5);
     }
     .card-overlay .card-sub {
       font-size: 0.75rem;
       font-weight: bold;
       color: rgba(244,245,243,0.7);
-      margin-top: 0.3rem;
+      margin-top: 0.1rem;
     }
 
     /* Camera icon — signals clickable gallery */
@@ -218,13 +219,13 @@ projectsGrid.forEach(project => {
 
     <div class="card-overlay">
       <div>
+        <p class="card-title">${project.name}</p>
         <p class="card-eyebrow">${typeLabel} · ${eyebrow1}</p>
         <p class="card-eyebrow"> ${eyebrow2}</p>
-        <p class="card-title">${project.name}</p>
         ${project.delivery_url
           ? `<p class="card-eyebrow" style="margin-top:0.4rem;">
           <a href="${project.delivery_url}"
-              style="color:#ffffff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.95);"
+              style="color:#ffffff;text-decoration:none; rgba(255,255,255,0.95);"
               onclick="event.stopPropagation();">
             View Cost Estimate →
             </a>
@@ -235,9 +236,6 @@ projectsGrid.forEach(project => {
           : ''}
       </div>
     </div>
-
-
-
     ${hasGallery
       ? `<div class="gallery-badge">
            <svg width="12" height="12" viewBox="0 0 16 16" fill="none">
