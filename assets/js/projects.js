@@ -285,6 +285,11 @@ export const projects = [
     delivery_url: null,
     gallery: [ 
       { src: 'assets/img/portfolio/renovation-addition-belfast-00.webp', caption: '' },
+      { src: 'assets/img/portfolio/renovation-addition-belfast-01.webp', caption: 'north elevation, August 2026' },
+      { src: 'assets/img/portfolio/renovation-addition-belfast-02.webp', caption: 'solar system for Apartment 2' },
+      { src: 'assets/img/portfolio/renovation-addition-belfast-03.webp', caption: 'roof framing superstructure' },
+      { src: 'assets/img/portfolio/renovation-addition-belfast-04.webp', caption: 'Apartment 1 entry addition' },
+      { src: 'assets/img/portfolio/renovation-addition-belfast-05.webp', caption: 'Crawl Space 1 heat pump indoor unit' },
     ],
   },
 
