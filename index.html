@@ -1038,7 +1038,7 @@ document.getElementById('contact-form').addEventListener('submit', async functio
       body: JSON.stringify(data),
     });
     if (res.ok) {
-      status.textContent = 'Message sent — we\'ll be in touch soon.';
+      status.textContent = 'Message sent — we\'ll be in touch soon. For quickest and most reliable response, please call or email us directly.';
       status.style.color = '#a8c8b8';
       this.reset();
     } else {
