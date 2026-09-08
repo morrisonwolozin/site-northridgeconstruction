@@ -258,7 +258,7 @@
       padding-left: 1.5rem;
     }
 
-    /* ── Cost estimator ───────────────────────────────── */
+    /* ── Cost predictor ───────────────────────────────── */
     .estimator-input {
       background: rgba(255,255,255,0.06);
       border: 1px solid rgba(244,245,243,0.2);
@@ -612,7 +612,7 @@
       <p style="color:rgba(244,245,243,0.65);line-height:1.8;font-size:0.9rem;">
         Build your room program and get a rough order-of-magnitude cost estimate — broken down by trade, based on current Midcoast Maine project data. This is a planning tool, not a contract or bid.
       </p>
-      <a href="cost-predictor.html" target="_blank" style="display:inline-block;margin-top:2rem;padding:0.75rem 2rem;background:#3d6b5a;color:#fff;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#2e5244'" onmouseout="this.style.background='#3d6b5a'">Open Project Cost Predictor →</a>
+      <a href="cost-predictor-placeholder.html" target="_blank" style="display:inline-block;margin-top:2rem;padding:0.75rem 2rem;background:#3d6b5a;color:#fff;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;text-decoration:none;transition:background 0.2s;" onmouseover="this.style.background='#2e5244'" onmouseout="this.style.background='#3d6b5a'">Open Project Cost Predictor →</a>
     </div>
 
   </div>
@@ -1031,8 +1031,8 @@ document.getElementById('contact-form').addEventListener('submit', async functio
   const data = Object.fromEntries(new FormData(this));
 
   try {
-    // contact-form-server endpoint — add northridgeconstruction recipient in server config
-    const res = await fetch('https://octoberengineering.com/forms/northridge/contact', {
+    // server-contact-forms
+    const res = await fetch('/forms/northridge/contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data),
