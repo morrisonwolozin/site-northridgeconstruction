@@ -3,6 +3,7 @@ frontend/node_modules/
 frontend/dist/
 frontend/.env.*
 frontend/.vite
+assets/img/portfolio/baks
 
 # Backend (for when it's started)
 backend/node_modules/
@@ -18,3 +19,4 @@ Thumbs.db
 .vscode/
 *.log
 .env
+
