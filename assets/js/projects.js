@@ -393,7 +393,8 @@ export const projects = [
     drawing: 'assets/img/portfolio/modern-cottage-south-thomaston-hero.webp',
     delivery_url: './delivery/18-cottage-south-thomaston-estimate.html',
     gallery: [
-        { src: 'assets/img/portfolio/modern-cottage-south-thomaston-00.webp', caption: 'foundation awaiting heating tubing placement' },
+      { src: 'assets/img/portfolio/modern-cottage-south-thomaston-00.webp', caption: 'framing and sheathing' },  
+      { src: 'assets/img/portfolio/modern-cottage-south-thomaston-01.webp', caption: 'foundation awaiting heat tubing placement' },
     ],
   },
 ];
