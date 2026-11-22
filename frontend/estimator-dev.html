@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estimator — Northridge Dev</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #1e2a26;
+      color: #f4f5f3;
+      -webkit-font-smoothing: antialiased;
+      margin: 0;
+    }
+
+    /* ── Inputs ─────────────────────────────────── */
+    .est-input {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(244,245,243,0.15);
+      color: #f4f5f3;
+      padding: 0.5rem 0.75rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      width: 100%;
+      transition: border-color 0.2s;
+    }
+    .est-input:focus { outline: none; border-color: #3d6b5a; }
+    .est-input::placeholder { color: rgba(244,245,243,0.28); }
+
+    select.est-input option { background: #1e2a26; color: #f4f5f3; }
+
+    /* ── Space rows ──────────────────────────────── */
+    .space-row {
+      display: grid;
+      grid-template-columns: 1fr 160px 90px 28px;
+      gap: 0.375rem;
+      align-items: center;
+    }
+
+    /* ── Cost table ──────────────────────────────── */
+    .cost-tbl { width: 100%; border-collapse: collapse; }
+    .cost-tbl th {
+      font-size: 0.65rem;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: rgba(244,245,243,0.38);
+      padding: 0 0 0.5rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(244,245,243,0.1);
+    }
+    .cost-tbl th:last-child { text-align: right; }
+    .cost-tbl td {
+      padding: 0.55rem 0;
+      font-size: 0.85rem;
+      border-bottom: 1px solid rgba(244,245,243,0.06);
+      color: #f4f5f3;
+      vertical-align: top;
+    }
+    .cost-tbl td:last-child {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .cost-tbl td.section-head {
+      font-size: 0.62rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(244,245,243,0.35);
+      padding-top: 1.1rem;
+      padding-bottom: 0.2rem;
+      border-bottom: none;
+    }
+    .cost-tbl tr.subtotal td {
+      border-top: 1px solid rgba(244,245,243,0.12);
+      border-bottom: none;
+      padding-top: 0.65rem;
+      font-size: 0.8rem;
+      color: rgba(244,245,243,0.55);
+    }
+    .cost-tbl tr.grand-total td {
+      border-top: 1px solid rgba(244,245,243,0.28);
+      border-bottom: none;
+      padding-top: 0.875rem;
+      font-family: 'Lora', serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #a8c8b8;
+    }
+
+    /* ── Badges on space rows ────────────────────── */
+    .type-badge {
+      display: inline-block;
+      font-size: 0.6rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.45rem;
+      border-radius: 2px;
+      font-weight: 600;
+    }
+
+    /* ── Disclaimer ──────────────────────────────── */
+    .disclaimer {
+      font-size: 0.72rem;
+      color: rgba(244,245,243,0.3);
+      line-height: 1.65;
+      margin-top: 1.25rem;
+    }
+
+    /* ── CTA button ──────────────────────────────── */
+    .cta-btn {
+      display: inline-block;
+      margin-top: 1.75rem;
+      padding: 0.7rem 1.75rem;
+      background: #3d6b5a;
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .cta-btn:hover { background: #2e5244; }
+
+    /* ── Add-space row ───────────────────────────── */
+    #add-row {
+      display: grid;
+      grid-template-columns: 1fr 160px 90px 28px;
+      gap: 0.375rem;
+      align-items: center;
+      margin-top: 0.375rem;
+    }
+    .add-btn {
+      width: 28px; height: 38px;
+      background: #3d6b5a;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      transition: background 0.2s;
+    }
+    .add-btn:hover { background: #2e5244; }
+    .rem-btn {
+      width: 28px; height: 38px;
+      background: transparent;
+      color: rgba(244,245,243,0.3);
+      border: 1px solid rgba(244,245,243,0.12);
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .rem-btn:hover { color: #e8a8a8; border-color: #e8a8a8; }
+
+    /* ── Summary bar ─────────────────────────────── */
+    #summary-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(244,245,243,0.08);
+      margin-bottom: 1.75rem;
+    }
+    .summary-cell {
+      background: rgba(255,255,255,0.04);
+      padding: 1rem 1.25rem;
+    }
+    .summary-cell .val {
+      font-family: 'Lora', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #f4f5f3;
+      line-height: 1;
+    }
+    .summary-cell .lbl {
+      font-size: 0.62rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(244,245,243,0.38);
+      margin-top: 0.35rem;
+    }
+
+    /* ── Column headers ──────────────────────────── */
+    .col-headers {
+      display: grid;
+      grid-template-columns: 1fr 160px 90px 28px;
+      gap: 0.375rem;
+      margin-bottom: 0.375rem;
+    }
+    .col-hdr {
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(244,245,243,0.32);
+      font-weight: 600;
+      padding: 0 0.75rem;
+    }
+
+    /* ── Empty state ─────────────────────────────── */
+    #empty-state {
+      border: 1px dashed rgba(244,245,243,0.1);
+      padding: 2.5rem;
+      text-align: center;
+      color: rgba(244,245,243,0.25);
+      font-size: 0.85rem;
+      line-height: 1.7;
+    }
+  </style>
+</head>
+<body>
+
+<section style="padding: 4rem 2rem; max-width: 1100px; margin: 0 auto;">
+
+  <!-- Section header -->
+  <p style="font-size:0.7rem;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#a8c8b8;margin-bottom:0.75rem;">Interactive Tool</p>
+  <h2 style="font-family:'Lora',serif;font-size:clamp(1.75rem,3vw,2.5rem);font-weight:700;color:#f4f5f3;line-height:1.2;margin-bottom:0.875rem;">Your Project Cost</h2>
+  <div style="width:2.5rem;height:2px;background:#3d6b5a;margin-bottom:1.25rem;"></div>
+  <p style="color:rgba(244,245,243,0.55);line-height:1.8;font-size:0.9rem;max-width:640px;margin-bottom:2.5rem;">
+    Build your room program below. Select a space type, give it a name, and enter its area. We'll apply current Midcoast Maine unit costs — fixed, per-room, and per-square-foot — to produce a rough order-of-magnitude breakdown by trade. This is a planning tool; contact us for a real estimate.
+  </p>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;">
+
+    <!-- ── LEFT: space builder ───────────────────── -->
+    <div>
+
+      <!-- Column headers -->
+      <div class="col-headers">
+        <span class="col-hdr">Space Name</span>
+        <span class="col-hdr">Type</span>
+        <span class="col-hdr" style="text-align:right;">Area (sf)</span>
+        <span></span>
+      </div>
+
+      <!-- Space list -->
+      <div id="space-list" style="display:flex;flex-direction:column;gap:0.375rem;"></div>
+
+      <!-- Add row -->
+      <div id="add-row">
+        <input id="inp-name" class="est-input" type="text" placeholder="e.g. Primary Bedroom" />
+        <select id="inp-type" class="est-input">
+          <option value="">— type —</option>
+          <optgroup label="Living Spaces">
+            <option value="living">Living / Dining</option>
+            <option value="bedroom">Bedroom</option>
+            <option value="office">Office / Study</option>
+            <option value="mudroom">Mudroom / Entry</option>
+          </optgroup>
+          <optgroup label="Wet Rooms">
+            <option value="kitchen">Kitchen</option>
+            <option value="bath-full">Full Bathroom</option>
+            <option value="bath-half">Half Bathroom</option>
+            <option value="laundry">Laundry Room</option>
+          </optgroup>
+          <optgroup label="Utility / Other">
+            <option value="mechanical">Mechanical Room</option>
+            <option value="garage">Garage Bay</option>
+            <option value="unfinished">Unfinished / Storage</option>
+          </optgroup>
+        </select>
+        <input id="inp-area" class="est-input" type="number" placeholder="sf" min="1" style="text-align:right;" />
+        <button class="add-btn" onclick="addSpace()" title="Add space">+</button>
+      </div>
+
+      <p style="font-size:0.68rem;color:rgba(244,245,243,0.25);margin-top:0.6rem;">Enter key advances fields · Tab · + to add</p>
+
+      <!-- Summary bar -->
+      <div id="summary-bar" style="margin-top:2rem;">
+        <div class="summary-cell">
+          <div class="val" id="sum-sf">0</div>
+          <div class="lbl">Conditioned sf</div>
+        </div>
+        <div class="summary-cell">
+          <div class="val" id="sum-spaces">0</div>
+          <div class="lbl">Spaces</div>
+        </div>
+        <div class="summary-cell">
+          <div class="val" id="sum-baths">0</div>
+          <div class="lbl">Bathrooms</div>
+        </div>
+      </div>
+
+      <!-- Space type legend -->
+      <div style="margin-top:1.25rem;display:flex;flex-wrap:wrap;gap:0.5rem;">
+        <span style="font-size:0.62rem;color:rgba(244,245,243,0.3);letter-spacing:0.06em;text-transform:uppercase;align-self:center;margin-right:0.25rem;">Pricing:</span>
+        <span class="type-badge" style="background:rgba(61,107,90,0.25);color:#a8c8b8;">$/sf</span>
+        <span style="font-size:0.7rem;color:rgba(244,245,243,0.3);align-self:center;">area-based</span>
+        <span style="color:rgba(244,245,243,0.15);align-self:center;">·</span>
+        <span class="type-badge" style="background:rgba(180,140,80,0.2);color:#d4b87a;">flat</span>
+        <span style="font-size:0.7rem;color:rgba(244,245,243,0.3);align-self:center;">per room</span>
+        <span style="color:rgba(244,245,243,0.15);align-self:center;">·</span>
+        <span class="type-badge" style="background:rgba(100,100,180,0.2);color:#a0a8d8;">both</span>
+        <span style="font-size:0.7rem;color:rgba(244,245,243,0.3);align-self:center;">area + flat</span>
+      </div>
+
+    </div>
+
+    <!-- ── RIGHT: cost breakdown ─────────────────── -->
+    <div>
+      <div id="empty-state">
+        Add your first space<br/>to see the cost breakdown.
+      </div>
+
+      <div id="cost-panel" style="display:none;">
+        <table class="cost-tbl">
+          <thead>
+            <tr>
+              <th>Trade / Division</th>
+              <th style="text-align:right;">Estimated Cost</th>
+            </tr>
+          </thead>
+          <tbody id="cost-body"></tbody>
+        </table>
+
+        <a href="#contact" class="cta-btn">Contact Northridge for a real estimate →</a>
+
+        <p class="disclaimer">
+          Rough order-of-magnitude estimate only · 2025 Midcoast Maine pricing ·
+          Conditioned area costs only — site work, land, design fees, permits, and
+          appliances not included · Actual costs vary with design complexity,
+          finish level, and site conditions.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+// ════════════════════════════════════════════════
+//  RATE TABLE  — edit these values as market shifts
+//  All dollar values in USD
+// ════════════════════════════════════════════════
+const RATES = {
+
+  // ── Fixed: whole-project, regardless of size ──
+  fixed: [
+    { name: 'Site & Foundation',   cost: 40000 },
+  ],
+
+  // ── Per-occurrence: flat cost each time a
+  //    space of this type appears in the program ──
+  //    (in addition to any $/sf contribution)
+  perType: {
+    'kitchen':    { label: 'Kitchen',        flat: 28000 },
+    'bath-full':  { label: 'Full Bathroom',  flat: 18000 },
+    'bath-half':  { label: 'Half Bathroom',  flat:  8500 },
+    'laundry':    { label: 'Laundry Room',   flat:  6500 },
+    'garage':     { label: 'Garage Bay',     flat: 22000 },
+  },
+
+  // ── Area-based: applied to ALL conditioned sf ──
+  //    (unfinished/garage sf excluded)
+  perSf: [
+    { name: 'Framing & Structure',       rate: 55  },
+    { name: 'Exterior Envelope',         rate: 52  },
+    { name: 'Roofing',                   rate: 18  },
+    { name: 'Mechanical (HVAC)',         rate: 25  },
+    { name: 'Mechanical (Plumbing)',     rate: 24  },
+    { name: 'Electrical',                rate: 26  },
+    { name: 'Insulation & Air Sealing',  rate: 22  },
+    { name: 'Interior Finishes',         rate: 52  },
+  ],
+
+  // ── Contingency + GC fee: % of all above ──
+  gcPercent: 0.09,
+};
+
+// Space type metadata (for display)
+const TYPE_META = {
+  'living':      { label: 'Living / Dining',  pricing: 'sf'   },
+  'bedroom':     { label: 'Bedroom',          pricing: 'sf'   },
+  'office':      { label: 'Office / Study',   pricing: 'sf'   },
+  'mudroom':     { label: 'Mudroom',          pricing: 'sf'   },
+  'kitchen':     { label: 'Kitchen',          pricing: 'both' },
+  'bath-full':   { label: 'Full Bathroom',    pricing: 'both' },
+  'bath-half':   { label: 'Half Bathroom',    pricing: 'both' },
+  'laundry':     { label: 'Laundry Room',     pricing: 'both' },
+  'mechanical':  { label: 'Mechanical Room',  pricing: 'sf'   },
+  'garage':      { label: 'Garage Bay',       pricing: 'flat' },
+  'unfinished':  { label: 'Unfinished',       pricing: 'flat' },  // no $/sf, no flat — just ignored for cost
+};
+
+const BADGE_STYLE = {
+  'sf':   'background:rgba(61,107,90,0.25);color:#a8c8b8;',
+  'flat': 'background:rgba(180,140,80,0.2);color:#d4b87a;',
+  'both': 'background:rgba(100,100,180,0.2);color:#a0a8d8;',
+};
+
+// ════════════════════════════════════════════════
+//  STATE
+// ════════════════════════════════════════════════
+let spaces = [];  // [{ id, name, type, area }]
+let nextId = 1;
+
+// ════════════════════════════════════════════════
+//  FORMATTERS
+// ════════════════════════════════════════════════
+function fmt(n) {
+  return '$' + Math.round(n).toLocaleString('en-US');
+}
+
+// ════════════════════════════════════════════════
+//  RENDER SPACE LIST
+// ════════════════════════════════════════════════
+function renderSpaces() {
+  const list = document.getElementById('space-list');
+  list.innerHTML = '';
+
+  spaces.forEach(sp => {
+    const meta   = TYPE_META[sp.type] || { label: sp.type, pricing: 'sf' };
+    const badge  = BADGE_STYLE[meta.pricing] || BADGE_STYLE['sf'];
+
+    const row = document.createElement('div');
+    row.className = 'space-row';
+    row.dataset.id = sp.id;
+
+    row.innerHTML = `
+      <input class="est-input" type="text" value="${escHtml(sp.name)}"
+        oninput="updateSpace(${sp.id},'name',this.value)" />
+      <select class="est-input" onchange="updateSpace(${sp.id},'type',this.value)">
+        <option value="">— type —</option>
+        <optgroup label="Living Spaces">
+          <option value="living"    ${sp.type==='living'   ?'selected':''}>Living / Dining</option>
+          <option value="bedroom"   ${sp.type==='bedroom'  ?'selected':''}>Bedroom</option>
+          <option value="office"    ${sp.type==='office'   ?'selected':''}>Office / Study</option>
+          <option value="mudroom"   ${sp.type==='mudroom'  ?'selected':''}>Mudroom / Entry</option>
+        </optgroup>
+        <optgroup label="Wet Rooms">
+          <option value="kitchen"   ${sp.type==='kitchen'  ?'selected':''}>Kitchen</option>
+          <option value="bath-full" ${sp.type==='bath-full'?'selected':''}>Full Bathroom</option>
+          <option value="bath-half" ${sp.type==='bath-half'?'selected':''}>Half Bathroom</option>
+          <option value="laundry"   ${sp.type==='laundry'  ?'selected':''}>Laundry Room</option>
+        </optgroup>
+        <optgroup label="Utility / Other">
+          <option value="mechanical"${sp.type==='mechanical'?'selected':''}>Mechanical Room</option>
+          <option value="garage"    ${sp.type==='garage'   ?'selected':''}>Garage Bay</option>
+          <option value="unfinished"${sp.type==='unfinished'?'selected':''}>Unfinished / Storage</option>
+        </optgroup>
+      </select>
+      <input class="est-input" type="number" value="${sp.area||''}" min="1"
+        style="text-align:right;"
+        oninput="updateSpace(${sp.id},'area',parseInt(this.value)||0)" />
+      <button class="rem-btn" onclick="removeSpace(${sp.id})" title="Remove">×</button>
+    `;
+
+    list.appendChild(row);
+  });
+
+  renderCosts();
+}
+
+function escHtml(str) {
+  return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');
+}
+
+// ════════════════════════════════════════════════
+//  CALCULATE + RENDER COSTS
+// ════════════════════════════════════════════════
+function renderCosts() {
+  // Summary stats
+  const conditionedSf = spaces
+    .filter(sp => sp.type !== 'garage' && sp.type !== 'unfinished')
+    .reduce((s, sp) => s + (sp.area || 0), 0);
+
+  const bathCount = spaces.filter(sp =>
+    sp.type === 'bath-full' || sp.type === 'bath-half'
+  ).length;
+
+  document.getElementById('sum-sf').textContent     = conditionedSf.toLocaleString('en-US');
+  document.getElementById('sum-spaces').textContent  = spaces.length;
+  document.getElementById('sum-baths').textContent   = bathCount;
+
+  const empty     = document.getElementById('empty-state');
+  const costPanel = document.getElementById('cost-panel');
+
+  if (spaces.length === 0) {
+    empty.style.display     = 'block';
+    costPanel.style.display = 'none';
+    return;
+  }
+  empty.style.display     = 'none';
+  costPanel.style.display = 'block';
+
+  // ── Calculate ────────────────────────────────
+
+  // 1. Fixed costs
+  let fixedTotal = 0;
+  const fixedRows = RATES.fixed.map(item => {
+    fixedTotal += item.cost;
+    return { name: item.name, cost: item.cost };
+  });
+
+  // 2. Per-occurrence flat costs, grouped by type
+  const flatTally = {};  // typeKey → { label, count, totalCost }
+  spaces.forEach(sp => {
+    if (RATES.perType[sp.type]) {
+      if (!flatTally[sp.type]) {
+        flatTally[sp.type] = {
+          label: RATES.perType[sp.type].label,
+          count: 0,
+          totalCost: 0,
+        };
+      }
+      flatTally[sp.type].count++;
+      flatTally[sp.type].totalCost += RATES.perType[sp.type].flat;
+    }
+  });
+  let flatTotal = 0;
+  const flatRows = Object.values(flatTally).map(item => {
+    flatTotal += item.totalCost;
+    return {
+      name: item.count > 1
+        ? `${item.label} × ${item.count}`
+        : item.label,
+      cost: item.totalCost,
+    };
+  });
+
+  // 3. Area-based costs
+  let areaTotal = 0;
+  const areaRows = RATES.perSf.map(item => {
+    const cost = conditionedSf * item.rate;
+    areaTotal += cost;
+    return { name: item.name, cost };
+  });
+
+  // 4. Subtotal before GC
+  const subtotal = fixedTotal + flatTotal + areaTotal;
+
+  // 5. GC + contingency
+  const gcCost = subtotal * RATES.gcPercent;
+  const grandTotal = subtotal + gcCost;
+
+  // ── Render table ─────────────────────────────
+  const tbody = document.getElementById('cost-body');
+  tbody.innerHTML = '';
+
+  function addSectionHead(label) {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td class="section-head" colspan="2">${label}</td>`;
+    tbody.appendChild(tr);
+  }
+
+  function addRow(name, cost, dimmed = false) {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td style="${dimmed?'color:rgba(244,245,243,0.5);':''}">${name}</td>
+      <td style="${dimmed?'color:rgba(244,245,243,0.5);':''}">${fmt(cost)}</td>
+    `;
+    tbody.appendChild(tr);
+  }
+
+  function addSubtotal(label, cost) {
+    const tr = document.createElement('tr');
+    tr.className = 'subtotal';
+    tr.innerHTML = `<td>${label}</td><td>${fmt(cost)}</td>`;
+    tbody.appendChild(tr);
+  }
+
+  function addGrandTotal(cost) {
+    const tr = document.createElement('tr');
+    tr.className = 'grand-total';
+    tr.innerHTML = `<td>Total Rough Estimate</td><td>${fmt(cost)}</td>`;
+    tbody.appendChild(tr);
+  }
+
+  // Fixed
+  addSectionHead('Fixed · Whole Project');
+  fixedRows.forEach(r => addRow(r.name, r.cost));
+
+  // Per-occurrence
+  if (flatRows.length > 0) {
+    addSectionHead('Per Room · Wet Rooms & Special Spaces');
+    flatRows.forEach(r => addRow(r.name, r.cost));
+    addSubtotal('Wet room subtotal', flatTotal);
+  }
+
+  // Area-based
+  addSectionHead(`Area-Based · ${conditionedSf.toLocaleString()} sf conditioned`);
+  areaRows.forEach(r => addRow(r.name, r.cost, conditionedSf === 0));
+  if (conditionedSf === 0) {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td colspan="2" style="font-size:0.78rem;color:rgba(244,245,243,0.28);padding:0.5rem 0;">Add conditioned spaces to see area-based costs.</td>`;
+    tbody.appendChild(tr);
+  }
+  addSubtotal('Area subtotal', areaTotal);
+
+  // GC + contingency
+  addSectionHead('Contingency & GC Fee');
+  addRow(`${Math.round(RATES.gcPercent * 100)}% of project subtotal`, gcCost);
+
+  // Grand total
+  addGrandTotal(grandTotal);
+}
+
+// ════════════════════════════════════════════════
+//  SPACE CRUD
+// ════════════════════════════════════════════════
+function addSpace() {
+  const name = document.getElementById('inp-name').value.trim();
+  const type = document.getElementById('inp-type').value;
+  const area = parseInt(document.getElementById('inp-area').value) || 0;
+
+  if (!name || !type) {
+    // highlight missing fields
+    if (!name) document.getElementById('inp-name').style.borderColor = '#e8a8a8';
+    if (!type) document.getElementById('inp-type').style.borderColor = '#e8a8a8';
+    setTimeout(() => {
+      document.getElementById('inp-name').style.borderColor = '';
+      document.getElementById('inp-type').style.borderColor = '';
+    }, 1200);
+    return;
+  }
+
+  spaces.push({ id: nextId++, name, type, area });
+  document.getElementById('inp-name').value = '';
+  document.getElementById('inp-type').value = '';
+  document.getElementById('inp-area').value = '';
+  document.getElementById('inp-name').focus();
+  renderSpaces();
+}
+
+function removeSpace(id) {
+  spaces = spaces.filter(sp => sp.id !== id);
+  renderSpaces();
+}
+
+function updateSpace(id, field, value) {
+  const sp = spaces.find(s => s.id === id);
+  if (sp) { sp[field] = value; renderCosts(); }
+}
+
+// ── Keyboard navigation in add row ───────────────
+document.getElementById('inp-name').addEventListener('keydown', e => {
+  if (e.key === 'Enter' || e.key === 'Tab') {
+    if (e.key === 'Enter') { e.preventDefault(); document.getElementById('inp-type').focus(); }
+  }
+});
+document.getElementById('inp-type').addEventListener('keydown', e => {
+  if (e.key === 'Enter') { e.preventDefault(); document.getElementById('inp-area').focus(); }
+});
+document.getElementById('inp-area').addEventListener('keydown', e => {
+  if (e.key === 'Enter') { e.preventDefault(); addSpace(); }
+});
+
+// ── Initial render ────────────────────────────────
+renderSpaces();
+</script>
+</body>
+</html>
